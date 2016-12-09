@@ -1,0 +1,50 @@
+# Author settings
+name: 起得文
+title: Linux 运维工程师
+address: 中国,昆明
+email: 319085528@qq.com
+github: skylens
+gavatar: /assets/img/avatar.JPG
+workHistory:
+- work1:
+  company: XX公司
+  location: 中国,XX
+  title: Linux 程序员
+  started: 201X
+  duration: (201X.X - 201X.X)
+  description: 干了XXXX
+
+educationHistory:
+- education1:
+  organization: 西南林业大学
+  degree: 
+  major: 
+  started: 2014
+  duration: (2014.9 - 2018.7)
+  description: 自学 Ruby, Python, Linux, 及虚拟化 KVM, VMware  
+languages:
+- language1:
+  name: 中文
+  proficiency: Native
+- language2:
+  name: English
+  proficiency: Limit
+programmingSkills:
+- Java:
+  name: Java/Android
+  percentage: 30%
+- Bash:
+  name: Bash Shell
+  percentage: 90%
+- CPP:
+  name: C/C++
+  percentage: 30%
+- PHP:
+  name: PHP
+  percentage: 30%
+- Python:
+  name: Python
+  percentage: 50%
+- OpenStack:
+  name: OpenStack
+  percentage: 60%

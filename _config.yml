@@ -1,17 +1,31 @@
 # Site settings
-title: Skylens's Blog
-description: >
-    This is an example of the Butane Jekyll Theme created by Alex Carpenter
-author: dewen qi
-email: 319085528@qq.com
-baseurl: "/butane-jekyll-theme" # the subpath of your site, e.g. /blog
-url: "http://skylens.github.io" # the base hostname & protocol for your site
-twitter_username: 
-github_username:  skylens
+title: Skylens' Blog
+description: skylens
+favicon: /assets/img/avatar.JPG
+baseurl:
+url: https://skylens.github.io
+rss_url:
 
 # Build settings
-include: [_pages]
+
+highlight: true
+#highlighter: rouge
+
+timezone: Asia/Shanghai
+
 markdown: kramdown
-permalink: /:year/:month/:title
-sass:
-    style: compressed
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+  coderay:
+    coderay_wrap: div
+    coderay_line_numbers: inline
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: style

@@ -1,88 +1,181 @@
 <!DOCTYPE html>
-<html class="light page-home">
-<head>
-  <meta charset="utf-8">  
-  <title>Skylens</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="null" />
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Skylens">
-  <meta property="og:url" content="https://skylens.coding.me/index.html">
-  <meta property="og:site_name" content="Skylens">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Skylens">
-  <link rel="icon" href="/favicon.ico">
-  <link href="assets/css/firststyles.css?v=c114cbe6" rel="stylesheet">
-  <!--<link rel="stylesheet" href="assets/css/firstpersonal-style.css">--> 
+<html lang="zh-CN">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>skylens</title>
+  <meta name="description" content="skylens">
+
+  <link rel="canonical" href="http://localhost:4000/main.html">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/blog.css" >
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon.ico">
+
+  <!-- Google fonts -->
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:300' type='text/css'>
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Source+Sans+Pro' type='text/css'>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.min.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+
 </head>
 
-<body>
-  <div class="content-home text-center">
-  <a class="avatar" href="/">
-    <img src="assets/img/bsd.jpg" alt="" />
-  </a>
-  <h1 class="name" style="font-family: calligraffittiregular">
-    skylens
-  </h1>
-  <div class="slogan">
-    (●´ω`●)/
-  </div>
 
-  <hr>
+  <body>
 
-  <ul class="text-center nav">
-    
-      <li class="item">
-        
-          <a href="/index.html">Home</a>
-        
-        <span>|</span>
-      </li>
-    
-      <li class="item">
-        
-          <a href="https://github.com/skylens" rel="noopener noreferrer" target="_blank">Github</a>
-        
-        <span>|</span>
-      </li>
-      <li class="item">
-        
-          <a href="https://coding.net/u/skylens" rel="noopener noreferrer" target="_blank">coding</a>
-        
-        <span>|</span>
-      </li>
-    
-  </ul>
-  </div>
-<script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
+    <header class="bloghead">
+    <dev class="authorheader">
+        <a href="/">
+            <img alt="My Avatar" src="/assets/img/bsd.jpg"/>
+        </a>
+        <dev class="blogtitle">
+            <h1><a href="/">skylens</a></h1>
+            <h5> (●´ω`●)/ </h5>
+        </dev>
+    </dev>
 
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
-    }
+    <nav class="menu" role="nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li>|</li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="https://github.com/skylens">Github</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="/about.html">About Me</a></li>
+        </ul>
+    </nav>
+</header>
 
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
+    <main class="blogmain">
+      
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/05/10/jellky.html">  Jekyll部署安装与调试 </a>
+        </h2>
+        <p class="post-time"> 2017年5月10日 星期三</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="jekyll是什么"><strong>Jekyll是什么</strong></h3>
 
-  window.onload = function() {
-    loadScript('/js/bundle.js?235683', function() {
-      // load success
-    });
-  }
+<p>Jekyll是一个简单的免费的Blog生成工具</p>
+
+<h3 id="安装jekyll"><strong>安装Jekyll</strong></h3>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># sudo pacman -S ruby  //先安装ruby，Jekyll的安装需要通过ruby的包管理工具gem来安装</span>
+<span class="c"># gem source -a https://gems.ruby-china.org  //将gem源改为国内的</span>
+<span class="c"># gem install jekyll bundler  //安装Jekyll和bundler</span>
+<span class="c"># jekyll new my-awesome-site  //用Jekyll创建博客目录</span>
+<span class="c"># cd my-awesome-site</span>
+<span class="c"># bundle exec jekyll serve  //启动服务</span></code></pre></figure>
+
+<h3 id="选择主题"><strong>选择主题</strong></h3>
+
+<ul>
+  <li><a href="http://jekyllthemes.org/">jekyllthemes.org</a></li>
+  <li><a href="https://themeforest.net/category/static-site-generators/jekyll">themeforest.net</a></li>
+  <li><a href="http://themes.jekyllrc.org/">jekyllrc.org</a></li>
+  <li><a href="http://www.zhanxin.info/themes.html">zhanxin.info</a></li>
+  <li>
+    <p><a href="https://github.com/liungkejin/liungkejin.github.io">我用的主题</a></p>
+
+    <p><strong>注意</strong>：有的主题下载下来，进入目录，启动服务就能通过浏览器预览，而有些则需要安装依赖之后才能预览，我用的
+主题可以直接预览</p>
+  </li>
+</ul>
+
+<h3 id="jekyll支持markdown语法"><strong>Jekyll支持Markdown语法</strong></h3>
+
+<p>Jekyll支持Markdown语法，所以在写文章时可以根据Markdown的语法规则来写，但有一些不同的地方。</p>
+
+<p>比如：代码嵌套</p>
+
+<h3 id="修改别人的主题"><strong>修改别人的主题</strong></h3>
+
+<p>正在折腾，日后完善</p>
+
+<h3 id="把本地的jekyll部署到github上"><strong>把本地的Jekyll部署到Github上</strong></h3>
+
+<p>利用Github Pages服务发布到互联网上</p>
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/05/10/jellky.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/05/10/first.html">  再次折腾 Jekyll </a>
+        </h2>
+        <p class="post-time"> 2017年5月10日 星期三</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <p>在一年之后我决定再次折腾jekyll，重新开始写博客，记录每一天。</p>
+
+<p>一转眼大学四年快过去了，现在大三的我整天浑浑噩噩，虽然每天都在上课，都在折腾linux，但没有目标，这不免让我对自己的未来有一丝担忧。</p>
+
+<p>我决定从今天起，每天写一篇博客，扯淡也好，记录自己的学习笔记也好，总之每天都提醒自己一下，希望每天都能得到一点提高！</p>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/05/10/first.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+    </main>
+
+    <div class="footer-copyright">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-md-12">
+                Copyright &copy; 2017 skylens - All rights reserved.
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74743250-2', 'auto');
+  ga('send', 'pageview');
+
 </script>
 
-</body>
+
+  </body>
+
 </html>

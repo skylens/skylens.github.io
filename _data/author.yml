@@ -7,12 +7,12 @@ github: skylens
 gavatar: /assets/img/bsd.jpg
 workHistory:
 - work1:
-  company: XX公司
-  location: 中国,XX
-  title: Linux 程序员
-  started: 201X
-  duration: (201X.X - 201X.X)
-  description: 干了XXXX
+  company: 西南林业大学
+  location: 中国,昆明
+  title: Linux 运维
+  started: 2015
+  duration: (2015.4 - 2018.1)
+  description: 协助学院网络中心维护学院服务器，维护OpenStack集群
 
 educationHistory:
 - education1:

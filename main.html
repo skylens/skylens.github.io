@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html class="light page-home">
+<head>
+  <meta charset="utf-8">  
+  <title>Skylens</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="keywords" content="null" />
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Skylens">
+  <meta property="og:url" content="https://skylens.coding.me/index.html">
+  <meta property="og:site_name" content="Skylens">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Skylens">
+  <link rel="icon" href="/favicon.ico">
+  <link href="assets/css/firststyles.css?v=c114cbe6" rel="stylesheet">
+  <!--<link rel="stylesheet" href="assets/css/firstpersonal-style.css">--> 
+</head>
+
+<body>
+  <div class="content-home text-center">
+  <a class="avatar" href="/">
+    <img src="assets/img/bsd.jpg" alt="" />
+  </a>
+  <h1 class="name" style="font-family: calligraffittiregular">
+    skylens
+  </h1>
+  <div class="slogan">
+    (●´ω`●)/
+  </div>
+
+  <hr>
+
+  <ul class="text-center nav">
+    
+      <li class="item">
+        
+          <a href="/index.html">Home</a>
+        
+        <span>|</span>
+      </li>
+    
+      <li class="item">
+        
+          <a href="https://github.com/skylens" rel="noopener noreferrer" target="_blank">Github</a>
+        
+        <span>|</span>
+      </li>
+      <li class="item">
+        
+          <a href="https://coding.net/u/skylens" rel="noopener noreferrer" target="_blank">coding</a>
+        
+        <span>|</span>
+      </li>
+    
+  </ul>
+  </div>
+<script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

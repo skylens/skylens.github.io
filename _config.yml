@@ -29,3 +29,7 @@ kramdown:
     coderay_tab_width: 4
     coderay_bold_every: 10
     coderay_css: style
+
+# 本地调试
+host: 0.0.0.0
+port: 5000

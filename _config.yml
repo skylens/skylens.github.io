@@ -1,7 +1,7 @@
 # Site settings
-title: Skylens' Blog
+title: skylens
 description: skylens
-favicon: /assets/img/avatar.JPG
+favicon: /assets/img/favicon.ico
 baseurl:
 url: https://skylens.github.io
 rss_url:

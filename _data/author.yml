@@ -4,7 +4,7 @@ title: Linux 运维工程师
 address: 中国,昆明
 email: skylens116@qq.com
 github: skylens
-gavatar: /assets/img/avatar.JPG
+gavatar: /assets/img/avatar.jpg
 workHistory:
 - work1:
   company: XX公司
@@ -35,16 +35,16 @@ programmingSkills:
   percentage: 30%
 - Bash:
   name: Bash Shell
-  percentage: 90%
+  percentage: 40%
 - CPP:
   name: C/C++
-  percentage: 30%
+  percentage: 10%
 - PHP:
   name: PHP
   percentage: 30%
 - Python:
   name: Python
-  percentage: 50%
+  percentage: 20%
 - OpenStack:
   name: OpenStack
-  percentage: 60%
+  percentage: 50%

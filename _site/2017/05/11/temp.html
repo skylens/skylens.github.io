@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Jekyll部署安装与调试</title>
-  <meta name="description" content="Jekyll是什么Jekyll是一个简单的免费的Blog生成工具安装Jekyll">
+  <title>_config.yml分析</title>
+  <meta name="description" content="">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/10/jellky.html">
+  <link rel="canonical" href="http://localhost:4000/2017/05/11/temp.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,54 +59,50 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">Jekyll部署安装与调试</h1>
+                <h1 class="article-title">_config.yml分析</h1>
                 <p class="article-time">
-                    2017年5月10日 星期三,  发表于 <span>昆明</span>
+                    2017年5月11日 星期四,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="jekyll是什么"><strong>Jekyll是什么</strong></h3>
+            <div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="c1"># Site settings</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s">skylens</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s">skylens</span>
+<span class="s">favicon</span><span class="pi">:</span> <span class="s">/assets/img/favicon.ico</span>
+<span class="s">baseurl</span><span class="pi">:</span>
+<span class="s">url</span><span class="pi">:</span> <span class="s">https://skylens.github.io</span>
+<span class="s">rss_url</span><span class="pi">:</span>
 
-<p>Jekyll是一个简单的免费的Blog生成工具</p>
+<span class="c1"># Build settings</span>
 
-<h3 id="安装jekyll"><strong>安装Jekyll</strong></h3>
+<span class="s">highlight</span><span class="pi">:</span> <span class="s">true</span>
+<span class="c1">#highlighter: rouge</span>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># sudo pacman -S ruby  //先安装ruby，Jekyll的安装需要通过ruby的包管理工具gem来安装</span>
-<span class="c"># gem source -a https://gems.ruby-china.org  //将gem源改为国内的</span>
-<span class="c"># gem install jekyll bundler  //安装Jekyll和bundler</span>
-<span class="c"># jekyll new my-awesome-site  //用Jekyll创建博客目录</span>
-<span class="c"># cd my-awesome-site</span>
-<span class="c"># bundle exec jekyll serve  //启动服务</span>
+<span class="s">timezone</span><span class="pi">:</span> <span class="s">Asia/Shanghai</span>
+
+<span class="s">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+<span class="s">kramdown</span><span class="pi">:</span>
+  <span class="s">auto_ids</span><span class="pi">:</span> <span class="s">true</span>
+  <span class="s">footnote_nr</span><span class="pi">:</span> <span class="s">1</span>
+  <span class="s">entity_output</span><span class="pi">:</span> <span class="s">as_char</span>
+  <span class="s">toc_levels</span><span class="pi">:</span> <span class="s">1..6</span>
+  <span class="s">smart_quotes</span><span class="pi">:</span> <span class="s">lsquo,rsquo,ldquo,rdquo</span>
+  <span class="s">enable_coderay</span><span class="pi">:</span> <span class="s">false</span>
+
+  <span class="s">coderay</span><span class="pi">:</span>
+    <span class="s">coderay_wrap</span><span class="pi">:</span> <span class="s">div</span>
+    <span class="c1">#coderay_line_numbers: inline</span>
+    <span class="s">coderay_line_numbers</span><span class="pi">:</span> 
+    <span class="s">coderay_line_numbers_start</span><span class="pi">:</span> <span class="s">1</span>
+    <span class="s">coderay_tab_width</span><span class="pi">:</span> <span class="s">4</span>
+    <span class="s">coderay_bold_every</span><span class="pi">:</span> <span class="s">10</span>
+    <span class="s">coderay_css</span><span class="pi">:</span> <span class="s">style</span>
+
+<span class="c1"># 调试</span>
+<span class="c1"># host: 0.0.0.0</span>
+<span class="c1"># port: 5000</span>
+
 </code></pre>
 </div>
-
-<h3 id="选择主题"><strong>选择主题</strong></h3>
-
-<ul>
-  <li><a href="http://jekyllthemes.org/">jekyllthemes.org</a></li>
-  <li><a href="https://themeforest.net/category/static-site-generators/jekyll">themeforest.net</a></li>
-  <li><a href="http://themes.jekyllrc.org/">jekyllrc.org</a></li>
-  <li><a href="http://www.zhanxin.info/themes.html">zhanxin.info</a></li>
-  <li>
-    <p><a href="https://github.com/liungkejin/liungkejin.github.io">我用的主题</a></p>
-
-    <p><strong>注意</strong>：有的主题下载下来，进入目录，启动服务就能通过浏览器预览，而有些则需要安装依赖之后才能预览，我用的
-主题可以直接预览</p>
-  </li>
-</ul>
-
-<h3 id="jekyll支持markdown语法"><strong>Jekyll支持Markdown语法</strong></h3>
-
-<p>Jekyll支持Markdown语法，所以在写文章时可以根据Markdown的语法规则来写，但有一些不同的地方。</p>
-
-<p>比如：代码嵌套</p>
-
-<h3 id="修改别人的主题"><strong>修改别人的主题</strong></h3>
-
-<p>正在折腾，日后完善</p>
-
-<h3 id="把本地的jekyll部署到github上"><strong>把本地的Jekyll部署到Github上</strong></h3>
-
-<p>利用Github Pages服务发布到互联网上</p>
 
             <footer class="article-footer">
     <div class="authorimage">

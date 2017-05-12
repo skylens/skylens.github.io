@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>emacs配置</title>
+  <meta name="description" content="Emacs是什么Emacs，著名的集成开发环境和文本编辑器。Emac使用Emacs Lisp，这种有着极强扩展性的编程语言，从而实现了包括编程、编译乃至网络浏览等等功能的扩展。Emacs可以根据自己的需求进行深度定制，定制出适合自己习惯的Emacs。所以Emacs被公认是最受专业程序员喜爱的代码编辑器之一。安装">
+
+  <link rel="canonical" href="http://localhost:4000/2017/05/12/emacs.html">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/blog.css" >
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon.ico">
+
+  <!-- Google fonts -->
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:300' type='text/css'>
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Source+Sans+Pro' type='text/css'>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.min.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+    <body>
+        <header class="bloghead">
+    <dev class="authorheader">
+        <a href="/">
+            <img alt="My Avatar" src="/assets/img/bsd.jpg"/>
+        </a>
+        <dev class="blogtitle">
+            <h1><a href="/main.html">skylens</a></h1>
+            <h5> (●´ω`●)/ </h5>
+        </dev>
+    </dev>
+
+    <nav class="menu" role="nav">
+        <ul>
+            <li><a href="/main.html">Home</a></li>
+            <li>|</li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="https://github.com/skylens">Github</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="/about.html">About Me</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+        <main class="blogmain">
+            <header>
+                <h1 class="article-title">emacs配置</h1>
+                <p class="article-time">
+                    2017年5月12日 星期五,  发表于 <span>昆明</span>
+                </p>
+            </header>
+            <h3 id="emacs是什么">Emacs是什么</h3>
+
+<p>Emacs，著名的集成开发环境和文本编辑器。Emac使用Emacs Lisp，这种有着极强扩展性的编程语言，从而实现了包括编程、编译乃至网络浏览等等功能的扩展。Emacs可以根据自己的需求进行深度定制，定制出适合自己习惯的Emacs。所以Emacs被公认是最受专业程序员喜爱的代码编辑器之一。</p>
+
+<h3 id="安装">安装</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install emacs  //Debian/ubuntu
+<span class="gp">$ </span>sudo pacman -S emacs  //ArchLinux/Manjaro
+<span class="gp">$ </span>sudo dnf install emacs  //Fedora
+</code></pre>
+</div>
+
+<h3 id="配置">配置</h3>
+
+<p><a href="https://coding.net/u/skylens/p/emacs.d/git/raw/master/emacs">我的<code class="highlighter-rouge">.emacs</code>配置文件</a></p>
+
+<p><a href="https://coding.net/u/skylens/p/emacs.d/git">我的<code class="highlighter-rouge">.emacs.d</code>目录</a></p>
+
+<p><code class="highlighter-rouge">.emacs.d</code>目录主要存放一些插件及其配置，以及一些主题</p>
+
+<h3 id="主题推荐">主题推荐</h3>
+
+<p><a href="https://emacsthemes.com/">主题网站</a></p>
+
+
+            <footer class="article-footer">
+    <div class="authorimage">
+        <img src="/assets/img/bsd.jpg" alt="My Avatar" class="img-circle">
+    </div>
+    <section class="author">
+        <h4><a href="/about.html">skylens</a></h4>
+        <a href="mailto:skylens116@qq.com">skylens116@qq.com</a>
+    </section>
+</footer>
+
+        </main>
+
+        <div class="footer-copyright">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-md-12">
+                Copyright &copy; 2017 skylens - All rights reserved.
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74743250-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    </body>
+
+</html>

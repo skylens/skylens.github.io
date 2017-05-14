@@ -29,10 +29,15 @@ GRUB_THEME="/boot/grub/themes/Vimix/theme.txt"
 
 ### 第三方主题
 
-[Vimix](https://github.com/Se7endAY/grub2-theme-vimix)
-[Ettery](https://github.com/Dacha204/grub2-themes-Ettery)
-[breeze](https://github.com/ysard/grub-breeze-kali-theme)
-[Elegant](https://github.com/maximilienGilet/Elegant-GRUB2)
-[archxion](https://github.com/Generator/Grub2-themes)
-[arch-silence](https://github.com/fghibellini/arch-silence)
+[**Vimix**](https://github.com/Se7endAY/grub2-theme-vimix)
+
+[**Ettery**](https://github.com/Dacha204/grub2-themes-Ettery)
+
+[**breeze**](https://github.com/ysard/grub-breeze-kali-theme)
+
+[**Elegant**](https://github.com/maximilienGilet/Elegant-GRUB2)
+
+[**archxion**](https://github.com/Generator/Grub2-themes)
+
+[**arch-silence**](https://github.com/fghibellini/arch-silence)
 

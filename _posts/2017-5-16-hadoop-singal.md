@@ -1,7 +1,7 @@
 ---
 layout: post_layout
 title: Hadoop单节点部署
-time: 2017年5月16日 星期三
+time: 2017年5月16日 星期二
 location: 昆明
 pulished: true
 excerpt_separator: "```"

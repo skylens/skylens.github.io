@@ -31,7 +31,7 @@ $ sudo dd bs=4M if=/home/skylens/Downloads/archlinux-2017.05.01-x86_64.iso of=/d
 - 分区(推荐至少分三个区)
 
 ```bash
-# cfdisk  
+# cfdisk
 boot分区  /dev/sda1
 swap分区  /dev/sda2
 根分区    /dev/sda3

@@ -1,7 +1,7 @@
 ---
 layout: post_layout
 title: 修改GRUB2的主题
-time: 2017年5月12日 星期五
+time: 2017年5月14日 星期天
 location: 昆明
 pulished: true
 excerpt_separator: "```"

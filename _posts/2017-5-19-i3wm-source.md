@@ -17,6 +17,9 @@ excerpt_separator: "```"
 - [**`mohlerm`**](https://github.com/mohlerm/dotfiles)
 - [**`Airblader`**](https://github.com/Airblader/dotfiles-manjaro)
 - [**`rhssk`**](https://github.com/rhssk/dotfiles)
+- [**`RomaniukVadim`**](https://github.com/RomaniukVadim/dotfiles_i3wm)
+- [**`acgtyrant`**](https://github.com/acgtyrant/dotfiles)
+- [**`aswen`**](https://github.com/aswen/dotfiles)
 
 ### 其他
 

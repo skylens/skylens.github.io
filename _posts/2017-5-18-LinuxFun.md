@@ -7,11 +7,11 @@ pulished: true
 excerpt_separator: "```"
 ---
 
-### oneko
+### [oneko](http://www.daidouji.com/oneko/)
 
 ```shell
 $ sudo apt-get install oneko  //Debian/ubuntu
 $ yaourt -S oneko  //Archlinux
 ```
 
-YouTube介绍视频，我已经搬运到了[B站]()!!!
+YouTube介绍视频，我已经搬运到了[B站](http://www.bilibili.com/video/av10674905/)!!!

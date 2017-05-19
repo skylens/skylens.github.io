@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>linux上那些有趣的小命令(更新中)</title>
-  <meta name="description" content="oneko">
+  <title>youtube-dl使用技巧</title>
+  <meta name="description" content="介绍youtube-dl是一款下载youtube视频的命令行小工具下载安装">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/18/LinuxFun.html">
+  <link rel="canonical" href="http://localhost:4000/2017/05/19/youtube-dl.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,19 +59,31 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">linux上那些有趣的小命令(更新中)</h1>
+                <h1 class="article-title">youtube-dl使用技巧</h1>
                 <p class="article-time">
-                    2017年5月18日 星期四,  发表于 <span>昆明</span>
+                    2017年5月19日 星期五,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="oneko"><a href="http://www.daidouji.com/oneko/">oneko</a></h3>
+            <h3 id="介绍">介绍</h3>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install oneko  //Debian/ubuntu
-<span class="gp">$ </span>yaourt -S oneko  //Archlinux
+<p><a href="https://rg3.github.io/youtube-dl/"><code class="highlighter-rouge">youtube-dl</code></a>是一款下载<code class="highlighter-rouge">youtube</code>视频的命令行小工具</p>
+
+<h3 id="下载安装">下载安装</h3>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+<span class="gp">$ </span>sudo chmod a+rx /usr/local/bin/youtube-dl
 </code></pre>
 </div>
 
-<p>YouTube介绍视频，我已经搬运到了<a href="http://www.bilibili.com/video/av10674905/">B站</a>!!!</p>
+<h3 id="使用">使用</h3>
+
+<p><strong>注意:<code class="highlighter-rouge">youtube-dl</code>在<code class="highlighter-rouge">fish shell</code>下效果不是很好，加了参数报错，建议使用<code class="highlighter-rouge">bash shell</code></strong></p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>youtube-dl --proxy <span class="s2">"socks5://127.0.0.1:1080"</span> https://www.youtube.com/watch?v<span class="o">=</span>xxxxx  //通过socks5协议来代理下载
+<span class="gp">$ </span>youtube-dl --proxy <span class="s2">"socks5://127.0.0.1:1080"</span> -F https://www.youtube.com/watch?v<span class="o">=</span>xxxxx  //加-F参数 列出可下载的格式及信息
+<span class="gp">$ </span>youtube-dl --proxy <span class="s2">"socks5://127.0.0.1:1080"</span> -f 22 https://www.youtube.com/watch?v<span class="o">=</span>xxxxx  //加-f 22参数 从上面的可下载的格式及信息中选择对应的format编号
+</code></pre>
+</div>
 
             <footer class="article-footer">
     <div class="authorimage">

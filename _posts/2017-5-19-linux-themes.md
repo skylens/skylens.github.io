@@ -19,6 +19,8 @@ excerpt_separator: "```"
 - [**`Flat-Remix`**](https://github.com/daniruiz/Flat-Remix-GNOME-theme)
 - [**`paper`**](https://snwh.org/paper/download)
 - [**`plank`**](https://github.com/fsvh/plank-themes)
+- [**`macOS-Sierra`**](https://github.com/B00merang-Project/macOS-Sierra)
+- [**`numix-themes-osx`**](https://aur.archlinux.org/packages/numix-themes-osx-git/)
 
 ### 图标
 
@@ -26,11 +28,13 @@ excerpt_separator: "```"
 - [**`Arc`**](https://github.com/horst3180/arc-icon-theme)
 - [**`noobslab`**](https://launchpad.net/~noobslab/+archive/ubuntu/icons)
 - [**`Flat-Remix`**](https://github.com/daniruiz/Flat-Remix)
+- [**`cocoa`**](https://github.com/libredeb/cocoa-icon-theme)
 
 ### 鼠标
 
 - [**`Capitaine cursors`**](https://github.com/keeferrourke/capitaine-cursors)
 - [**`OSX El Capitan`**]()
+
 
 ### lightdm主题
 

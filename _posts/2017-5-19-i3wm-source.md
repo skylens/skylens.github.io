@@ -1,11 +1,20 @@
 ---
 layout: post_layout
-title: i3wm资源
+title: i3wm资源整理
 time: 2017年5月19日 星期五
 location: 昆明
 pulished: true
 excerpt_separator: "```"
 ---
+
+### 安装
+
+- [**`ArchLinux安装及配置`**](http://www.cnblogs.com/unkownarea/p/6258050.html)
+- [**`ArchLinux安装及配置1`**](http://www.cnblogs.com/bluestorm/p/5929172.html)
+- [**`ArchLinux安装及配置2`**](http://fugoes.me/2017/01/17/Arch-Linux-Rocks/)
+- [**`ArchLinux安装及配置3`**](http://blog.csdn.net/listener_ri/article/details/45407783)
+- [**`i3wm配置`**](https://my.oschina.net/kylidboy/blog/639789)
+- [**`i3wm配置1`**](http://www.zhimengzhe.com/linux/194610.html)
 
 ### 配置
 

@@ -29,6 +29,7 @@ excerpt_separator: "```"
 - [**`noobslab`**](https://launchpad.net/~noobslab/+archive/ubuntu/icons)
 - [**`Flat-Remix`**](https://github.com/daniruiz/Flat-Remix)
 - [**`cocoa`**](https://github.com/libredeb/cocoa-icon-theme)
+- [**`elementary-full-icon`**](https://github.com/btd1337/elementary-full-icon-theme)
 
 ### 鼠标
 

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SSH的设置</title>
+  <meta name="description" content="SSHSSH是目前较可靠专为远程登录会话和其他网络服务提供安全性的协议，为计算机上的Shell提供安全的传输和使用环境安装SSH分为客户端和服务端，一般的发行版都自带了SSH客户端，安装也主要针对服务器端，配置也主要在服务器端">
+
+  <link rel="canonical" href="http://localhost:4000/2017/05/22/ssh.html">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/blog.css" >
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon.ico">
+
+  <!-- Google fonts -->
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:300' type='text/css'>
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Source+Sans+Pro' type='text/css'>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.min.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+    <body>
+        <header class="bloghead">
+    <dev class="authorheader">
+        <a href="/">
+            <img alt="My Avatar" src="/assets/img/bsd.jpg"/>
+        </a>
+        <dev class="blogtitle">
+            <h1><a href="/main.html">skylens</a></h1>
+            <h5> (●´ω`●)/ </h5>
+        </dev>
+    </dev>
+
+    <nav class="menu" role="nav">
+        <ul>
+            <li><a href="/main.html">Home</a></li>
+            <li>|</li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="https://github.com/skylens">Github</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="/about.html">About Me</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+        <main class="blogmain">
+            <header>
+                <h1 class="article-title">SSH的设置</h1>
+                <p class="article-time">
+                    2017年5月22日 星期一,  发表于 <span>昆明</span>
+                </p>
+            </header>
+            <h3 id="ssh">SSH</h3>
+
+<p>SSH是目前较可靠专为远程登录会话和其他网络服务提供安全性的协议，为计算机上的Shell提供安全的传输和使用环境</p>
+
+<h3 id="安装">安装</h3>
+
+<p>SSH分为客户端和服务端，一般的发行版都自带了SSH客户端，安装也主要针对服务器端，配置也主要在服务器端</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install -y openssh-server  //Debian/ubuntu
+<span class="gp">$ </span>sudo yum install -y openssh-server  //CentOS
+<span class="gp">$ </span>sudo pacman -S openssh  //Archlinux/Manjaro
+</code></pre>
+</div>
+
+<h3 id="配置">配置</h3>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo /etc/init.d/ssh start  //启动服务
+<span class="gp">$ </span>sudo /etc/init.d/ssh stop  //停止服务
+<span class="gp">$ </span>sudo /etc/init.d/ssh restart  //重启服务
+</code></pre>
+</div>
+
+<h3 id="设置">设置</h3>
+
+<p><strong>1.免密码登录</strong>(免密码登录就是使用密钥来登录)</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ssh-keygen -t rsa -b 4096 -C <span class="s2">"xxxx@mail.com"</span>  //生成密钥对，这样生成密钥对可以把公钥放到GitHub上
+<span class="gp">$ </span>scp .ssh/id_rsa.pub user@server:~/  //把公钥上传到server上
+<span class="gp">$ </span>ssh user@server  //登录到server上，准备设置实现用user登录server免密码
+<span class="gp">$ </span>cat id_rsa.pub &gt;&gt; ～/.ssh/authorized_keys  //把公钥添加到.ssh/authorzied_keys文件里
+<span class="gp">$ </span>chmod 600 .ssh/authorized_keys  //authorzied_keys修改文件的权限
+<span class="gp">$ </span>rm id_rsa.pub  //删除公钥
+<span class="gp">$ </span>ssh-copy-id -p 22 -i .ssh/id_rsa.pub user@server  //这条命令可实现上述的效果
+</code></pre>
+</div>
+
+<p><strong>2.禁止文本密码登录，使用密钥登录</strong></p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PasswordAuthentication no
+</code></pre>
+</div>
+
+<p><strong>3.root设置</strong></p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>PermitRootLogin without-password  //加上第二部的设置，可以实现root只能用密钥登录，不能用文本密码登录
+PermitRootLogin no  //禁止root登录，无论是密码还是密钥都不行
+</code></pre>
+</div>
+
+<h3 id="ssh工具使用">ssh工具使用</h3>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ssh-keygen -t rsa -f cloud.pem  //生成名为cloud.pem的密钥对
+</code></pre>
+</div>
+
+
+            <footer class="article-footer">
+    <div class="authorimage">
+        <img src="/assets/img/bsd.jpg" alt="My Avatar" class="img-circle">
+    </div>
+    <section class="author">
+        <h4><a href="/about.html">skylens</a></h4>
+        <a href="mailto:skylens116@qq.com">skylens116@qq.com</a>
+    </section>
+</footer>
+
+        </main>
+
+        <div class="footer-copyright">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-md-12">
+                Copyright &copy; 2017 skylens - All rights reserved.
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74743250-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    </body>
+
+</html>

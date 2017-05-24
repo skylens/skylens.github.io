@@ -1,7 +1,7 @@
 ---
 layout: post_layout
 title: 通过virt-install来创建虚拟机
-time: 2017年5月23日 星期二
+time: 2017年5月24日 星期三
 location: 昆明
 pulished: true
 excerpt_separator: "```"

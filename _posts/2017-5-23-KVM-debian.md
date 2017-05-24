@@ -53,14 +53,14 @@ $ qemu-img create -f qcow2 kvm_linux_test.qcow2 10G
 ### 用virt-install创建虚拟机
 
 ```shell
-$ virt-install --name=kvm_linux_test\
---boot network,cdrom,menu=on\
---ram 2048\
---vcpus=2\
---disk path=~/kvm_linux_test.qcow2,size=10,format=qcow2,bus=virtio\
---cdrom=~/debian.iso\
---network bridge=br0,model=virtio\
---vnc --vncport=5900 --vnclisten=0.0.0.0\
+$ virt-install --name=kvm_linux_test \
+--boot network,cdrom,menu=on \
+--ram 2048 \
+--vcpus=2 \
+--disk path=~/kvm_linux_test.qcow2,size=10,format=qcow2,bus=virtio \
+--cdrom=~/debian.iso \
+--network bridge=br0,model=virtio \
+--vnc --vncport=5900 --vnclisten=0.0.0.0 \
 --accelerate
 ```
 

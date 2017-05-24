@@ -67,7 +67,8 @@ $ virt-install --name=kvm_linux_test\
 ### 用qemu-kvm创建虚拟机
 
 ```shell
-$ sudo kvm -m 2048 -drive file=~/debian.iso,index=1,media=cdrom -drive file=~/kvm_linux_test.qcow2,model=virtio -net user -nographic -vnc :0 -usbdevice tablet
+$ sudo kvm -m 2048 -drive file=~/iso/windows_7_professional.iso,index=1,media=cdrom -drive file=~/image/win7_sp1_x64_en_vlk.qcow2,if=virtio -drive file=~/iso/virtio-win-0.1-74.iso,index=3,media=cdrom -net nic,model=virtio -net user -nographic -vnc :9 -usbdevice tablet  //windows
+$ sudo kvm -m 1024 -cdrom debian.iso -drive file=kvm_linux_test.qcow2,if=virtio,index=0 -boot d -net nic -net user -nographic -vnc :1  //linux
 //然后用vnc客户端连接，进行进一步安装
 ```
 
@@ -82,3 +83,5 @@ $
 - [基于Linux命令行KVM虚拟机的安装配置与基本使用](http://www.cnblogs.com/linuxprobe/p/5724546.html)
 - [KVM 虚拟机命令行安装配置](http://blog.csdn.net/cd520yy/article/details/10000671)
 - [openstack windows 镜像制作](http://cs2.swfc.edu.cn/~jsf/network/openstack_windows.html)
+- [Creating qcow2 CentOS Image for OpenStack](https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/OpenStack/page/Creating+qcow2+CentOS+Image+for+OpenStack)
+- [OpenStack image guide](https://docs.openstack.org/image-guide/virt-install.html)

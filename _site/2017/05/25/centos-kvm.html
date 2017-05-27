@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Hadoop单节点部署</title>
-  <meta name="description" content="什么是Hadoop在Debian 8上部署1.用户设置">
+  <title>搭建CentOS上的KVM实验环境</title>
+  <meta name="description" content="准备使用VMware Workstations作为实验环境，安装CentOS7，启用虚拟化，分配2GB内存，20GB磁盘，只设置root用户密码，不添加普通用户设置1.安装CentOS时，SOFTWARE SELECTION选择Virtualization-Host和Virtualization-Platform...">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/16/hadoop-singal.html">
+  <link rel="canonical" href="http://localhost:4000/2017/05/25/centos-kvm.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,76 +59,60 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">Hadoop单节点部署</h1>
+                <h1 class="article-title">搭建CentOS上的KVM实验环境</h1>
                 <p class="article-time">
-                    2017年5月16日 星期二,  发表于 <span>昆明</span>
+                    2017年5月25日 星期四,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="什么是hadoop">什么是Hadoop</h3>
+            <h3 id="准备">准备</h3>
 
-<h3 id="在debian-8上部署">在<code class="highlighter-rouge">Debian 8</code>上部署</h3>
+<p>使用VMware Workstations作为实验环境，安装CentOS7，启用虚拟化，分配2GB内存，20GB磁盘，只设置root用户密码，不添加普通用户</p>
 
-<p><strong>1.用户设置</strong></p>
+<h3 id="设置">设置</h3>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo useradd -m hadoop -s /bin/bash
-<span class="gp">$ </span>sudo passwd hadoop
-<span class="gp">$ </span>sudo adduser hadoop sudo
-<span class="gp">$ </span>sudo su - hadoop
+<p><strong>1.安装CentOS时，<code class="highlighter-rouge">SOFTWARE SELECTION</code>选择<code class="highlighter-rouge">Virtualization-Host</code>和<code class="highlighter-rouge">Virtualization-Platform</code>这两项，当然如果选择了最小安装，可以通过下面的命令来安装上面的软件</strong></p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># yum group install -y virtualization-hypervison</span>
+<span class="c"># yum group install -y virtualization-tools</span>
+<span class="c"># yum group install -y virtualization-platform</span>
 </code></pre>
 </div>
 
-<p><strong>2.源设置</strong></p>
+<p><strong>2.对于如果想要图形管理界面，执行</strong></p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo nano /etc/apt/sources.list
-
-deb http://mirrors.ustc.edu.cn/debian/ jessie main contrib non-free
-deb http://mirrors.163.com/debian/ jessie main non-free contrib
-
-<span class="gp">$ </span>sudo apt-get update
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># yum group install -y virtualization-client</span>
+<span class="c"># yum group install -y gnome-desktop</span>
 </code></pre>
 </div>
 
-<p><strong>3.安装软件</strong></p>
+<p><strong>3.设置CentOS7的网络，默认CentOS网络不启动，启动网络</strong></p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install vim openssh-server openjdk-7-jre openjdk-7-jdk
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># ifconfig -a</span>
+<span class="c"># dhclient ens33</span>
 </code></pre>
 </div>
 
-<p><strong>4.设置Java环境变量</strong></p>
+<p><strong>4.防火墙和SELinux设置</strong></p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>vim ~/.bashrc  //最前面添加
-<span class="nb">export </span><span class="nv">JAVA_HOME</span><span class="o">=</span>/usr/lib/jvm/java-7-openjdk-amd64
-
-<span class="gp">$ </span><span class="nb">source</span> ~/.bashrc
-<span class="gp">$ </span><span class="nv">$JAVA_HOME</span>/bin/java -version
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># systemctl stop firewalld</span>
+<span class="c"># systemctl disable firewalld</span>
+<span class="c"># setenforce 0</span>
+<span class="c"># sed -i "s,SELINUX=enforcing,SELINUX=disabled,g" /etc/sysconfig/selinux</span>
 </code></pre>
 </div>
 
-<p><strong>5.设置免密码登录</strong></p>
+<p><strong>5.安装设置VNC服务器</strong></p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>ssh-keygen -t rsa
-<span class="gp">$ </span>ssh-copy-id hadoop@localhost
-<span class="gp">$ </span>ssh localhost
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># yum install -y tighter*</span>
+<span class="c"># vim /etc/libvirt/qemu.conf</span>
+vnc_listen <span class="o">=</span> <span class="s2">"0.0.0.0"</span>  //取消前面的注释
+<span class="c"># systemctl restart libvirtd</span>
 </code></pre>
 </div>
 
-<p><strong>6.下载安装Hadoop</strong></p>
+<p><strong>6.建立数据目录</strong></p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>wegt http://mirror.bit.edu.cn/apache/hadoop/common/hadoop-2.7.1/hadoop-2.7.1.tar.gz
-<span class="gp">$ </span>sudo tar -zxvf hadoop-2.7.1.tar.gz -C /usr/local
-<span class="gp">$ </span><span class="nb">cd</span> /usr/local
-<span class="gp">$ </span>sudo mv hadoop-2.7.1 hadoop
-<span class="gp">$ </span>sudo chown -R hadoop ./hadoop
-</code></pre>
-</div>
-
-<p><strong>7.配置Hadoop</strong></p>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd</span> /usr/local/hadoop
-<span class="gp">$ </span>mkdir ./input
-<span class="gp">$ </span>cp ./etc/hadoop/<span class="k">*</span>.xml ./input
-<span class="gp">$ </span>./bin/hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-<span class="k">*</span>.jar grep ./input ./output <span class="s1">'dfs[a-z.]+'</span>
-<span class="gp">$ </span>cat ./output/<span class="k">*</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># mkdir -p /data/{isos,images}</span>
 </code></pre>
 </div>
 

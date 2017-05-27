@@ -52,7 +52,7 @@
             <li>|</li>
             <li><a href="/menu.html">Menu</a></li>
             <li>|</li>
-            <li><a target="_blank" href="https://github.com/skylens">Github</a></li>
+            <li><a target="_blank" href="https://github.com/skylens">GitHub</a></li>
             <li>|</li>
             <li><a target="_blank" href="/about.html">About Me</a></li>
         </ul>
@@ -64,9 +64,98 @@
 <article class="preview">
     <header>
         <h2 class="post-title">
+            <a href="/2017/05/27/KVM-virsh.html">  virsh管理KVM虚拟机 </a>
+        </h2>
+        <p class="post-time"> 2017年5月27日 星期六</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="介绍">介绍</h3>
+
+<p><code class="highlighter-rouge">virsh</code>是一款kvm的命令行管理工具</p>
+
+<h3 id="用法及注意">用法及注意</h3>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/05/27/KVM-virsh.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/05/26/KVM-network.html">  KVM网络设置 </a>
+        </h2>
+        <p class="post-time"> 2017年5月26日 星期五</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="kvm虚拟机网络连接有两种方式">KVM虚拟机网络连接有两种方式</h3>
+
+<ul>
+  <li>
+    <p>用户网络（User Networking）：让虚拟机访问主机、互联网或本地网络上的资源的简单方法，但是不能从网络或其他的客户机访问客户机，性能上也需要大的调整。NAT方式。</p>
+  </li>
+  <li>
+    <p>虚拟网桥（Virtual Bridge）：这种方式要比用户网络复杂一些，但是设置好后客户机与互联网，客户机与主机之间的通信都很容易。Bridge方式。</p>
+  </li>
+</ul>
+
+<h3 id="kvm默认的default是用户网络">KVM默认的default是用户网络</h3>
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/05/26/KVM-network.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/05/25/centos-kvm.html">  搭建CentOS上的KVM实验环境 </a>
+        </h2>
+        <p class="post-time"> 2017年5月25日 星期四</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="准备">准备</h3>
+
+<p>使用VMware Workstations作为实验环境，安装CentOS7，启用虚拟化，分配2GB内存，20GB磁盘，只设置root用户密码，不添加普通用户</p>
+
+<h3 id="设置">设置</h3>
+
+<p><strong>1.安装CentOS时，<code class="highlighter-rouge">SOFTWARE SELECTION</code>选择<code class="highlighter-rouge">Virtualization-Host</code>和<code class="highlighter-rouge">Virtualization-Platform</code>这两项，当然如果选择了最小安装，可以通过下面的命令来安装上面的软件</strong></p>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/05/25/centos-kvm.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
             <a href="/2017/05/24/KVM-virt-install.html">  通过virt-install来创建虚拟机 </a>
         </h2>
-        <p class="post-time"> 2017年5月23日 星期二</p>
+        <p class="post-time"> 2017年5月24日 星期三</p>
     </header>
     <section class="post-section">
         <p>

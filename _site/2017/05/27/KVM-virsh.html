@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>配置使用fish</title>
-  <meta name="description" content="fish是一款开箱即用的shell安装">
+  <title>virsh管理KVM虚拟机</title>
+  <meta name="description" content="介绍virsh是一款kvm的命令行管理工具用法及注意">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/21/fish.html">
+  <link rel="canonical" href="http://localhost:4000/2017/05/27/KVM-virsh.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,59 +59,20 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">配置使用fish</h1>
+                <h1 class="article-title">virsh管理KVM虚拟机</h1>
                 <p class="article-time">
-                    2017年5月21日 星期天,  发表于 <span>昆明</span>
+                    2017年5月27日 星期六,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <p>fish是一款开箱即用的shell</p>
+            <h3 id="介绍">介绍</h3>
 
-<h3 id="安装">安装</h3>
+<p><code class="highlighter-rouge">virsh</code>是一款kvm的命令行管理工具</p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install fish  //Debian/ubuntu
-<span class="gp">$ </span>sudo pacman -S fish  //Archlinux/Manjaro
+<h3 id="用法及注意">用法及注意</h3>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>
 </code></pre>
 </div>
-
-<h3 id="配置">配置</h3>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>chsh -s /usr/bin/fish  //设置fish为默认shell
-<span class="gp">$ </span>fish_config  //在浏览器中打开配置界面
-</code></pre>
-</div>
-
-<h3 id="安装oh-my-fish">安装<a href="https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/zh-CN/README.md"><code class="highlighter-rouge">oh-my-fish</code></a></h3>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish  //安装
-<span class="gp">$ </span>omf theme robbyrussell  //安装robbyrussell主题
-</code></pre>
-</div>
-
-<p>离线安装oh-my-fish</p>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># 用git安装</span>
-<span class="gp">$ </span>git clone https://github.com/oh-my-fish/oh-my-fish
-<span class="gp">$ </span><span class="nb">cd </span>oh-my-fish
-<span class="gp">$ </span>bin/install --offline
-<span class="c"># 用压缩包安装</span>
-<span class="gp">$ </span>curl -L https://get.oh-my.fish &gt; install
-<span class="gp">$ </span>fish install --offline<span class="o">=</span>omf.tar.gz
-</code></pre>
-</div>
-
-<h3 id="参考">参考</h3>
-
-<ul>
-  <li>
-    <p><a href="http://www.jianshu.com/p/7ffd9d1af788">宇宙第一shell——fish入门</a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/oh-my-fish/oh-my-fish/blob/master/README.md">GitHub官方文档</a></p>
-  </li>
-  <li>
-    <p><a href="https://fishshell.com/docs/current/tutorial.html">fishshell</a></p>
-  </li>
-</ul>
 
             <footer class="article-footer">
     <div class="authorimage">

@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>配置使用fish</title>
-  <meta name="description" content="fish是一款开箱即用的shell安装">
+  <title>KVM网络设置</title>
+  <meta name="description" content="KVM虚拟机网络连接有两种方式      用户网络（User Networking）：让虚拟机访问主机、互联网或本地网络上的资源的简单方法，但是不能从网络或其他的客户机访问客户机，性能上也需要大的调整。NAT方式。        虚拟网桥（Virtual Bridge）：这种方式要比用户网络复杂一些，但是设置好后...">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/21/fish.html">
+  <link rel="canonical" href="http://localhost:4000/2017/05/26/KVM-network.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,59 +59,23 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">配置使用fish</h1>
+                <h1 class="article-title">KVM网络设置</h1>
                 <p class="article-time">
-                    2017年5月21日 星期天,  发表于 <span>昆明</span>
+                    2017年5月26日 星期五,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <p>fish是一款开箱即用的shell</p>
-
-<h3 id="安装">安装</h3>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install fish  //Debian/ubuntu
-<span class="gp">$ </span>sudo pacman -S fish  //Archlinux/Manjaro
-</code></pre>
-</div>
-
-<h3 id="配置">配置</h3>
-
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>chsh -s /usr/bin/fish  //设置fish为默认shell
-<span class="gp">$ </span>fish_config  //在浏览器中打开配置界面
-</code></pre>
-</div>
-
-<h3 id="安装oh-my-fish">安装<a href="https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/zh-CN/README.md"><code class="highlighter-rouge">oh-my-fish</code></a></h3>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish  //安装
-<span class="gp">$ </span>omf theme robbyrussell  //安装robbyrussell主题
-</code></pre>
-</div>
-
-<p>离线安装oh-my-fish</p>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># 用git安装</span>
-<span class="gp">$ </span>git clone https://github.com/oh-my-fish/oh-my-fish
-<span class="gp">$ </span><span class="nb">cd </span>oh-my-fish
-<span class="gp">$ </span>bin/install --offline
-<span class="c"># 用压缩包安装</span>
-<span class="gp">$ </span>curl -L https://get.oh-my.fish &gt; install
-<span class="gp">$ </span>fish install --offline<span class="o">=</span>omf.tar.gz
-</code></pre>
-</div>
-
-<h3 id="参考">参考</h3>
+            <h3 id="kvm虚拟机网络连接有两种方式">KVM虚拟机网络连接有两种方式</h3>
 
 <ul>
   <li>
-    <p><a href="http://www.jianshu.com/p/7ffd9d1af788">宇宙第一shell——fish入门</a></p>
+    <p>用户网络（User Networking）：让虚拟机访问主机、互联网或本地网络上的资源的简单方法，但是不能从网络或其他的客户机访问客户机，性能上也需要大的调整。NAT方式。</p>
   </li>
   <li>
-    <p><a href="https://github.com/oh-my-fish/oh-my-fish/blob/master/README.md">GitHub官方文档</a></p>
-  </li>
-  <li>
-    <p><a href="https://fishshell.com/docs/current/tutorial.html">fishshell</a></p>
+    <p>虚拟网桥（Virtual Bridge）：这种方式要比用户网络复杂一些，但是设置好后客户机与互联网，客户机与主机之间的通信都很容易。Bridge方式。</p>
   </li>
 </ul>
+
+<h3 id="kvm默认的default是用户网络">KVM默认的default是用户网络</h3>
 
             <footer class="article-footer">
     <div class="authorimage">

@@ -16,16 +16,14 @@ excerpt_separator: "```"
 - virt-install创建centos虚拟机
 
 ```shell
-virt-install --virt-type kvm \
---name centos \
---ram 1024 \
---disk /tmp/centos.qcow2,format=qcow2 \
+virt-install \
+--name=debian \
+--vcpus=2 \
+--ram=1024 \
+--disk path=/data/images/kvm_linux_test.qcow2 \
+--cdrom=/data/isos/debian-8.8.0-amd64-netinst.iso \
 --network network=default \
---graphics vnc,listen=0.0.0.0 \
---noautoconsole \
---os-type=linux \
---os-variant=centos7.0 \
---location=/data/isos/CentOS-7-x86_64-NetInstall-1611.iso
+--graphics vnc,listen=0.0.0.0,port=5901
 ```
 
 - virt-install创建windows虚拟机
@@ -33,17 +31,13 @@ virt-install --virt-type kvm \
 ```shell
 virt-install --connect qemu:///system \
 --name ws2012 \
---ram 2048 \
 --vcpus 2 \
+--ram 1024 \
 --network network=default,model=virtio \
 --disk path=ws2012.qcow2,format=qcow2,device=disk,bus=virtio \
 --cdrom /path/to/en_windows_server_2012_x64_dvd.iso \
 --disk path=/path/to/virtio-win-0.1-XX.iso,device=cdrom \
---vnc \
---os-type windows \
---os-variant win2k12 \
---os-distro windows \
---os-version 2012
+--graphics vnc,listen=0.0.0.0,port=5902
 ```
 
 ### 解释

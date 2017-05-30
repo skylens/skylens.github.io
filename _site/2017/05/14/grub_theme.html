@@ -75,7 +75,7 @@
 <p>怎样修改主题</p>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># git clone https://github.com/Se7endAY/grub2-theme-vimix.git  //把Vimix主题克隆到本地</span>
-<span class="c"># cd grub2-theme-Vimix/  </span>
+<span class="c"># cd grub2-theme-Vimix/</span>
 <span class="c"># mv Vimix/ /boot/grub/themes/  //把Vimix主题整个目录移动到GRUB的主题目录下</span>
 <span class="c"># vim /etc/default/grub  //修改GRUB配置文件，找到GRUB_THEME，做如下修改</span>
 <span class="nv">GRUB_THEME</span><span class="o">=</span><span class="s2">"/boot/grub/themes/Vimix/theme.txt"</span>
@@ -84,7 +84,7 @@
 </code></pre>
 </div>
 
-<h3 id="第三方主题">第三方主题</h3>
+<h3 id="第三方主题整理">第三方主题整理</h3>
 
 <p><a href="https://github.com/Se7endAY/grub2-theme-vimix"><strong>Vimix</strong></a></p>
 
@@ -98,6 +98,24 @@
 
 <p><a href="https://github.com/fghibellini/arch-silence"><strong>arch-silence</strong></a></p>
 
+<h3 id="用了第三方主题还是不够精致">用了第三方主题还是不够精致</h3>
+
+<p>启动菜单中还有一个<code class="highlighter-rouge">Advanced options for XX linux</code>，一般我们用不到，怎么隐藏它呢！</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># vim /boot/grub/grub.cfg</span>
+找到Advanced options部分把它们全部注销
+</code></pre>
+</div>
+
+<p>装了Windows的同学，windows的选项是<code class="highlighter-rouge">Windows Boot Manager (on /dev/sda2)</code>这样的，我们可以找到这部分，把这部分替换过成<code class="highlighter-rouge">Windows 10</code></p>
+
+<h3 id="最后的结果">最后的结果</h3>
+
+<p><br />
+<img src="/assets/post_pictures/EtteryPreview.png" width="650" />
+ 
+<br />
+这样就简洁精致许多了</p>
 
             <footer class="article-footer">
     <div class="authorimage">
@@ -105,6 +123,7 @@
     </div>
     <section class="author">
         <h4><a href="/about.html">skylens</a></h4>
+        有问题请联系
         <a href="mailto:skylens116@qq.com">skylens116@qq.com</a>
     </section>
 </footer>

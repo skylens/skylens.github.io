@@ -70,11 +70,11 @@
 
 <h3 id="制作archlinux启动u盘"><strong>制作ArchLinux启动U盘</strong></h3>
 
-<p>准备一个至少2GB的一个U盘，下载U盘启动制作工具，常见的U盘启动工具有软碟通(Windows平台下的工具)，rufus(windows平台下的开源绿色工具)，dd(*ux平台下的命令行工具)</p>
+<p>准备一个至少2GB的一个U盘，下载U盘启动制作工具，常见的U盘启动工具有软碟通(Windows平台下的工具)，rufus(windows平台下的开源绿色工具)，dd(*nux平台下的命令行工具)</p>
 
 <p>如何使用<strong>dd</strong>制作启动U盘</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo fdisk /dev/sdb   //格式化U盘
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo fdisk /dev/sdb   //格式化U盘
 <span class="gp">$ </span>sudo dd <span class="nv">bs</span><span class="o">=</span>4M <span class="k">if</span><span class="o">=</span>/home/skylens/Downloads/archlinux-2017.05.01-x86_64.iso <span class="nv">of</span><span class="o">=</span>/dev/sdb  //等待几分钟
 </code></pre>
 </div>
@@ -91,7 +91,7 @@
   <li>分区(推荐至少分三个区)</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># cfdisk</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># cfdisk</span>
 boot分区  /dev/sda1
 swap分区  /dev/sda2
 根分区    /dev/sda3
@@ -107,7 +107,7 @@ swap分区  /dev/sda2
   <li>挂载分区</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># mount /dev/sda3 /mnt  //把根分区挂载到临时的mnt目录下</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># mount /dev/sda3 /mnt  //把根分区挂载到临时的mnt目录下</span>
 <span class="c"># cd /mnt</span>
 <span class="c"># mkdir -p boot/efi  //在mnt目录下新建boot和efi目录</span>
 <span class="c"># mount /dev/sda1 /mnt/boot/efi  //把boot分区挂载到efi目录下</span>
@@ -118,7 +118,7 @@ swap分区  /dev/sda2
   <li>修改源</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># grep -A 1 'China' /etc/pacman.d/mirrorlist &gt; mirrorlist.bak //取出中国的源，避免操作失误先写到一个新文件中</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># grep -A 1 'China' /etc/pacman.d/mirrorlist &gt; mirrorlist.bak //取出中国的源，避免操作失误先写到一个新文件中</span>
 <span class="c"># vi /etc/pacman.d/mirrorlist  //检查，删除空行</span>
 <span class="c"># cat mirrorlist.bak &gt; /etc/pacman.d/mirrorlist  //替换原来的内容</span>
 <span class="c"># pacman -Sy  //更新一下源</span>
@@ -129,7 +129,7 @@ swap分区  /dev/sda2
   <li>安装基本系统</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># pacstrap -i /mnt base base-devel</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># pacstrap -i /mnt base base-devel</span>
 </code></pre>
 </div>
 
@@ -137,7 +137,7 @@ swap分区  /dev/sda2
   <li>配置</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># genfstab –p /mnt &gt;&gt; /mnt/etc/fstab  //生成fstab</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># genfstab –p /mnt &gt;&gt; /mnt/etc/fstab  //生成fstab</span>
 <span class="c"># cat /mnt/etc/fstab  //检查生成的fstab是否正确</span>
 <span class="c"># arch-chroot /mnt  //转回到主目录</span>
 <span class="c"># nano /etc/locale.gen  //去掉en_US.UTF-8,zh_CN.GB18030,zh_CN.UTF-8前面 的注释</span>
@@ -157,23 +157,92 @@ swap分区  /dev/sda2
   <li>安装grub</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># pacman -S grub-bios efibootmgr dosfstools os-prober   //os-prober双系统用户安装</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># pacman -S grub-bios efibootmgr dosfstools os-prober   //os-prober双系统用户安装</span>
 <span class="c"># grub-mkconfig –o /boot/grub/grub.cfg</span>
-<span class="c"># grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck </span>
+<span class="c"># grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck</span>
 </code></pre>
 </div>
 
 <ul>
-  <li>结尾</li>
+  <li>安装结束重启</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># exit</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># exit</span>
 <span class="c"># umount -R /mnt</span>
 <span class="c"># reboot</span>
 </code></pre>
 </div>
 
-<p>至此，系统已经基本安装完成了，重启后就能进入黑乎乎的界面了，图形界面还需要自己选择安装！</p>
+<ul>
+  <li>基本设置</li>
+</ul>
+
+<p>重启后，能进入tty终端，证明安装成功，接下来进行设置</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># dhcpcd ens169</span>
+<span class="c"># systemctl enable dhcpcd</span>
+<span class="c"># pacman -S openssh net-tools vim sudo gksu htop</span>
+<span class="c"># systemctl enable dhcpcd</span>
+<span class="c"># systemctl enable sshd</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>安装各种驱动</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># pacman -S xf86-video-intel xf86-input-synaptics xf86-input-elographics xf86-input-keyboard xf86-input-mouse xf86-input-libinput xf86-input-evdev</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>安装图形界面</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># pacman -S xorg-server xorg-xinit wayland wayland-protocols gnome gnome-terminal i3 lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings</span>
+<span class="c"># systemctl enable lightdm</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>网络管理界面</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># pacman -S network-manager-applet networkmanager networkmanager-dispatcher-ntpd networkmanager-openconnect networkmanager-openvpn networkmanager-pptp networkmanager-vpnc nm-connection-editor openvpn ppp pptpclient vpnc rp-pppoe wireless_tools wpa_supplicant</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>声音</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># pacman -S alsa-utils pulseaudio gnome-alsamixer pavucontrol</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>安装<code class="highlighter-rouge">fcitx</code>输入法</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># pacman -S fcitx fcitx-im fcitx-cloudpinyin fcitx-configtool fcitx-googlepinyin fcitx-qt5</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>安装解压软件</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># pacman -S p7zip file-roller unrar tar zip</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>安装其他软件</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># pacman -S lxappearance nitrogen pcmanfm evince gedit arandr viewnior</span>
+</code></pre>
+</div>
 
             <footer class="article-footer">
     <div class="authorimage">
@@ -181,6 +250,7 @@ swap分区  /dev/sda2
     </div>
     <section class="author">
         <h4><a href="/about.html">skylens</a></h4>
+        有问题请联系
         <a href="mailto:skylens116@qq.com">skylens116@qq.com</a>
     </section>
 </footer>

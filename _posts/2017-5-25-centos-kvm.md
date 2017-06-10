@@ -47,7 +47,7 @@ excerpt_separator: "```"
 **5.安装设置VNC服务器**
 
 ```shell
-# yum install -y tighter*
+# yum install -y tiger*
 # vim /etc/libvirt/qemu.conf
 vnc_listen = "0.0.0.0"  //取消前面的注释
 # systemctl restart libvirtd

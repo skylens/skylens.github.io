@@ -78,7 +78,7 @@
 </code></pre>
 </div>
 
-<h3 id="配置">配置</h3>
+<h3 id="服务管理">服务管理</h3>
 
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo /etc/init.d/ssh start  //启动服务
 <span class="gp">$ </span>sudo /etc/init.d/ssh stop  //停止服务
@@ -86,7 +86,7 @@
 </code></pre>
 </div>
 
-<h3 id="设置">设置</h3>
+<h3 id="配置">配置</h3>
 
 <p><strong>1.免密码登录</strong>(免密码登录就是使用密钥来登录)</p>
 
@@ -110,6 +110,19 @@
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code>PermitRootLogin without-password  //加上第二部的设置，可以实现root只能用密钥登录，不能用文本密码登录
 PermitRootLogin no  //禁止root登录，无论是密码还是密钥都不行
+</code></pre>
+</div>
+
+<p><strong>4.利用 ssh 的用户配置文件 config 管理 ssh 会话</strong></p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd</span> .ssh
+<span class="gp">$ </span>vim config
+  Host vps
+    HostName 192.168.1.110
+    Port 2222
+    User admin
+    IdentityFile ~/.ssh/private_ras
+<span class="gp">$ </span>ssh vps   //效果等同于 ssh -i ~/.ssh/private_ras admin@192.168.1.110 -p 2222
 </code></pre>
 </div>
 

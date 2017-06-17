@@ -86,7 +86,10 @@
 <span class="gp">$ </span>git config --global user.email <span class="s2">"skylens116@qq.com"</span>  //配置个人电子邮件
 <span class="gp">$ </span>git config --global core.editor vim  //配置默认编辑器
 <span class="gp">$ </span>git config --global merge.tool vimdiff  //配置默认的文本差异比较工具
-<span class="gp">$ </span>
+<span class="gp">$ </span>git config --global color.ui <span class="nb">true</span>  //打开所有的默认终端着色
+<span class="gp">$ </span>git config --global color.diff.meta <span class="s2">"blue black bold"</span>  //diff输出的改变信息以粗体、蓝色前景和黑色背景的形式显示
+<span class="gp">$ </span>git config --global https.proxy <span class="s1">'socks5://127.0.0.1:1080'</span>  //设置使用socks代理
+<span class="gp">$ </span>git config --global http.proxy <span class="s1">'socks5://127.0.0.1:1080'</span>  //设置使用socks代理
 </code></pre>
 </div>
 
@@ -95,6 +98,35 @@
 </ul>
 
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>git config --list
+</code></pre>
+</div>
+
+<ul>
+  <li><strong><code class="highlighter-rouge">gitignore</code>配置</strong></li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd </span>repository
+<span class="gp">$ </span>vim .gitignore
+<span class="c"># Windows:</span>
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+<span class="c"># Python:</span>
+<span class="k">*</span>.py[cod]
+<span class="k">*</span>.so
+<span class="k">*</span>.egg
+<span class="k">*</span>.egg-info
+dist
+build
+
+<span class="c"># C:</span>
+<span class="c"># (*.o and *.a)</span>
+<span class="k">*</span>.[oa]
+
+<span class="c"># self:</span>
+db.ini
+<span class="k">*</span>_rsa
 </code></pre>
 </div>
 

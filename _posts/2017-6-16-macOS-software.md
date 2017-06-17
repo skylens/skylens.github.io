@@ -38,10 +38,14 @@ excerpt_separator: "```"
 
 - [`Mou`](http://25.io/mou/)
 
-- `GitHub Desktop`
+- [`GitHub Desktop`](https://desktop.github.com/)
 
-- `DropBox`
+- [`GitBook Editor`](https://www.gitbook.com/editor/)
 
-- `网易云音乐`
+- [`DropBox`](https://www.dropbox.com/install)
+
+- [`网易云音乐`](http://music.163.com/#/download)
 
 - `微信`
+
+- [`vlc`](http://www.videolan.org/vlc/download-macosx.html)

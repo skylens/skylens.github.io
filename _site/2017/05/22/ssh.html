@@ -117,11 +117,11 @@ PermitRootLogin no  //禁止root登录，无论是密码还是密钥都不行
 
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">cd</span> .ssh
 <span class="gp">$ </span>vim config
-  Host vps
-    HostName 192.168.1.110
-    Port 2222
-    User admin
-    IdentityFile ~/.ssh/private_ras
+Host vps
+  HostName 192.168.1.110
+  Port 2222
+  User admin
+  IdentityFile ~/.ssh/private_ras
 <span class="gp">$ </span>ssh vps   //效果等同于 ssh -i ~/.ssh/private_ras admin@192.168.1.110 -p 2222
 </code></pre>
 </div>

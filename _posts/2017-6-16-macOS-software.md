@@ -34,6 +34,10 @@ excerpt_separator: "```"
 
 - [`MacPass`](https://github.com/mstarke/MacPass/releases)
 
+- [`typra`](https://www.typora.io/)
+
+- [`Mou`](http://25.io/mou/)
+
 - `GitHub Desktop`
 
 - `DropBox`

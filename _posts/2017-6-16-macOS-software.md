@@ -34,7 +34,7 @@ excerpt_separator: "```"
 
 - [`MacPass`](https://github.com/mstarke/MacPass/releases)
 
-- [`typra`](https://www.typora.io/)
+- [`typra`](https://www.typora.io/) 和 [`pacdoc`](http://pandoc.org/installing.html)
 
 - [`Mou`](http://25.io/mou/)
 

@@ -25,3 +25,24 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+# C:
+# (*.o and *.a)
+*.[oa]
+
+# self:
+db.ini
+*_rsa

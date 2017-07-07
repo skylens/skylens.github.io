@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>再次折腾 Jekyll</title>
-  <meta name="description" content="在一年之后我决定再次折腾jekyll，重新开始写博客，记录每一天。一转眼大学四年快过去了，现在大三的我整天浑浑噩噩，虽然每天都在上课，都在折腾linux，但没有目标，这不免让我对自己的未来有一丝担忧。我决定从今天起，每天写一篇博客，扯淡也好，记录自己的学习笔记也好，总之每天都提醒自己一下，希望每天都能得到一点提高！">
+  <title>macOS 启动盘制作</title>
+  <meta name="description" content="开始准备一张8GB的U盘，到AppStore下载好macOS的镜像格式化U盘 打开终端">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/10/first.html">
+  <link rel="canonical" href="http://localhost:4000/2017/07/07/macOS-install.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,17 +59,27 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">再次折腾 Jekyll</h1>
+                <h1 class="article-title">macOS 启动盘制作</h1>
                 <p class="article-time">
-                    2017年5月10日 星期三,  发表于 <span>昆明</span>
+                    2017年7月7日 星期五,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <p>在一年之后我决定再次折腾jekyll，重新开始写博客，记录每一天。</p>
+            <h3 id="开始">开始</h3>
 
-<p>一转眼大学四年快过去了，现在大三的我整天浑浑噩噩，虽然每天都在上课，都在折腾linux，但没有目标，这不免让我对自己的未来有一丝担忧。</p>
+<p>准备一张8GB的U盘，到AppStore下载好macOS的镜像</p>
 
-<p>我决定从今天起，每天写一篇博客，扯淡也好，记录自己的学习笔记也好，总之每天都提醒自己一下，希望每天都能得到一点提高！</p>
+<h3 id="格式化u盘">格式化U盘</h3>
 
+<p><img src="/assets/post_pictures/USB_Formate.png" width="650" />
+ </p>
+
+<h3 id="打开终端">打开终端</h3>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo /Applications/Install<span class="se">\ </span>macOS<span class="se">\ </span>Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/Sierra --applicationpath /Applications/Install<span class="se">\ </span>macOS<span class="se">\ </span>Sierra.app --nointeraction
+</code></pre>
+</div>
+
+<p>输入密码，等待10多分钟完成</p>
 
             <footer class="article-footer">
     <div class="authorimage">

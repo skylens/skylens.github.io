@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>macOS下的软件列表</title>
-  <meta name="description" content="macOS下的软件列表  homebrew">
+  <title>Linux命令之cat</title>
+  <meta name="description" content="cat查看文件内容">
 
-  <link rel="canonical" href="http://localhost:4000/2017/06/16/macOS-software.html">
+  <link rel="canonical" href="http://localhost:4000/2017/06/18/linux-command.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,73 +59,29 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">macOS下的软件列表</h1>
+                <h1 class="article-title">Linux命令之cat</h1>
                 <p class="article-time">
-                    2017年6月16日 星期五,  发表于 <span>昆明</span>
+                    2017年6月18日 星期天,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="macos下的软件列表">macOS下的软件列表</h3>
+            <h3 id="cat查看文件内容"><code class="highlighter-rouge">cat</code>查看文件内容</h3>
 
-<ul>
-  <li>
-    <p><a href="https://brew.sh/"><code class="highlighter-rouge">homebrew</code></a></p>
-
-    <div class="language-ruby highlighter-rouge"><pre class="highlight"><code>  <span class="sr">/usr/</span><span class="n">bin</span><span class="o">/</span><span class="n">ruby</span> <span class="o">-</span><span class="n">e</span> <span class="s2">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cat test.txt
 </code></pre>
-    </div>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">google-chrome</code></p>
+</div>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>  <span class="nv">$ </span>wget https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p><a href="https://github.com/shadowsocks/shadowsocks-iOS/wiki/Shadowsocks-for-OSX-帮助"><code class="highlighter-rouge">shadowsocks</code></a> 及 <code class="highlighter-rouge">proxychinas-ng</code></p>
+<h3 id="cat编辑文件"><code class="highlighter-rouge">cat</code>编辑文件</h3>
 
-    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>  <span class="nv">$ </span>brew install proxychains-ng
-  <span class="nv">$ </span>proxychinas4 --help
-</code></pre>
-    </div>
-  </li>
-  <li>
-    <p><a href="https://www.iterm2.com/"><code class="highlighter-rouge">itetm2</code></a></p>
-  </li>
-  <li>
-    <p><a href="http://www.sublimetext.com/"><code class="highlighter-rouge">sublime text 3</code></a></p>
-  </li>
-  <li>
-    <p><a href="https://github.com/mstarke/MacPass/releases"><code class="highlighter-rouge">MacPass</code></a></p>
-  </li>
-  <li>
-    <p><a href="https://www.typora.io/"><code class="highlighter-rouge">typra</code></a> 和 <a href="http://pandoc.org/installing.html"><code class="highlighter-rouge">pacdoc</code></a></p>
-  </li>
-  <li>
-    <p><a href="http://25.io/mou/"><code class="highlighter-rouge">Mou</code></a></p>
-  </li>
-  <li>
-    <p><a href="https://desktop.github.com/"><code class="highlighter-rouge">GitHub Desktop</code></a></p>
-  </li>
-  <li>
-    <p><a href="https://www.gitbook.com/editor/"><code class="highlighter-rouge">GitBook Editor</code></a></p>
-  </li>
-  <li>
-    <p><a href="https://www.dropbox.com/install"><code class="highlighter-rouge">DropBox</code></a></p>
-  </li>
-  <li>
-    <p><a href="http://music.163.com/#/download"><code class="highlighter-rouge">网易云音乐</code></a></p>
-  </li>
-  <li>
-    <p><code class="highlighter-rouge">微信</code></p>
-  </li>
-  <li>
-    <p><a href="http://www.videolan.org/vlc/download-macosx.html"><code class="highlighter-rouge">vlc</code></a></p>
-  </li>
-  <li>
-    <p><a href="http://www.kekaosx.com/zh-cn/"><code class="highlighter-rouge">Keka</code></a></p>
-  </li>
-</ul>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>cat <span class="sh">&lt;&lt; EOF &gt; test.txt  //覆盖test.txt中的内容，以EOF结束
+abc
+ABC
+EOF
+</span><span class="gp">$ </span>cat <span class="sh">&lt;&lt; EOF &gt;&gt; test.txt  //追加内容到test.txt，以EOF结束
+123
+ABC
+EOF
+</span></code></pre>
+</div>
 
             <footer class="article-footer">
     <div class="authorimage">

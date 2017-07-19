@@ -69,6 +69,9 @@ net.ipv4.ip_forward=1
 + iptables设置
 
 ```shell
+
+# iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source VPS的IP地址
+
 # iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 # iptables --table nat --append POSTROUTING --out-interface ppp0 -j MASQUERADE
 # iptables -I INPUT -s 192.168.0.0/24 -i ppp0 -j ACCEPT

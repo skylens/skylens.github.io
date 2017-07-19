@@ -72,6 +72,7 @@ dn: cn=admin,dc=example,dc=com
 objectClass: organizationalRole
 objectClass: top
 cn: admin
+$ sudo vim /etc/environment   //修改环境变量把openldap的安装目录添加进去
 $ ldapadd -x -D "cn=admin,dc=example,dc=com" -w secret -f admin.ldif   //添加数据库 
 $ ldapsearch -x -b 'dc=example,dc=com'   //检查数据库是否添加成功
 ```

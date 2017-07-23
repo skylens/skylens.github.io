@@ -18,6 +18,7 @@ excerpt_separator: "```"
 <img src="/assets/post_pictures/open-config.png" width="650">
 &nbsp;
 <br>
+
 + 安装
 
   ```shell

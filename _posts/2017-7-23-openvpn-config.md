@@ -15,7 +15,7 @@ excerpt_separator: "```"
 
 + 规划
 
-![](/assets/post_picturesopen-config.png)
+![](/assets/post_pictures/open-config.png)
 
 + 安装
 

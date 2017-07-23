@@ -19,7 +19,6 @@ excerpt_separator: "```"
 <img src="/assets/post_pictures/open-config.png" width="650">
 &nbsp;
 <br>
-![](/assets/post_pictures/open-config.png)
 
 + 安装
 

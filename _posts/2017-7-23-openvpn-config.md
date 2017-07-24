@@ -15,7 +15,10 @@ excerpt_separator: "```"
 
 + 规划
 
-![](/assets/post_pictures/open-config.png)
+<br>
+<img src="/assets/post_pictures/open-config.png" width="650">
+&nbsp;
+<br>
 
 + 安装
 

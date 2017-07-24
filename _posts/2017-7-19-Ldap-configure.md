@@ -22,6 +22,7 @@ $ sudo apt-get install gcc make
 + 先编译安装BerkeleyDB(注意要选择5.0-5.1或4.4-4.8的版本)
 
 ```shell
+$ wget http://download.oracle.com/berkeley-db/db-5.1.29.tar.gz
 $ tar -xvf db-5.1.29.tar.gz
 $ cd db-5.1.29
 $ cd build_unix
@@ -35,6 +36,7 @@ $ sudo cp /usr/local/BerkeleyDB/lib/* /usr/lib/
 + 编译安装openldap
 
 ```shell
+$ wget ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.45.tgz
 $ tar -xvf openldap-2.4.45.tgz
 $ cd openldap-2.4.45
 $ ./configure --prefix=/usr/local/openldap

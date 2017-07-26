@@ -7,7 +7,7 @@ pulished: true
 excerpt_separator: "```"
 ---
 
-**先下载`[YaHei Consolas Hybrid](https://github.com/yakumioto/YaHei-Consolas-Hybrid-1.12)`字体**
+**先下载并安装`[YaHei Consolas Hybrid](https://github.com/yakumioto/YaHei-Consolas-Hybrid-1.12)`字体**
 
 **win + R -> regedit**
 

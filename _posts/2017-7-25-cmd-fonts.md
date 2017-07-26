@@ -7,19 +7,19 @@ pulished: true
 excerpt_separator: "```"
 ---
 
-先下载`YaHei Consolas Hybrid`字体
+**先下载`[YaHei Consolas Hybrid](https://github.com/yakumioto/YaHei-Consolas-Hybrid-1.12)`字体**
 
-win + R -> regedit
+**win + R -> regedit**
 
 ```
 计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont
 ```
 
-新建一个字符串值 
+**新建一个字符串值** 
 
-修改值为`YaHei Consolas Hybrid`
+**修改值为`YaHei Consolas Hybrid`**
 
-效果图
+**效果图**
 
 <br>
 <img src="/assets/post_pictures/cmd_font.png" width="650">

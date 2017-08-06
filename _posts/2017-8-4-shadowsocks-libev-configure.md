@@ -9,7 +9,7 @@ excerpt_separator: "```"
 
 ### 前言
 
-在 Raspberry Pi 3 B 上编译安装 shadowsocks-libev ，实现透明代理
+在 Raspberry Pi 3 上编译安装 shadowsocks-libev ，实现透明代理
 
 ### 准备
 
@@ -51,6 +51,9 @@ $ sudo su
 # tar -xvf shadowsocks-libev-3.0.8.tar.gz && cd shadowsocks-libev-3.0.8
 # ./configure --disable-documentation
 # make && make install
+# cp debian/shadowsocks-libev-*.service /lib/systemd/system/
+# cp debian/config.json /etc/shadowsocks-libev/
+# vim /etc/shadowsocks-libev/config.json
 ```
 
 ### 尾巴
@@ -59,4 +62,8 @@ $ sudo su
 
 ### 链接
 
+[shadowsocks-libev 安装脚本](https://github.com/teddysun/shadowsocks_install/blob/master/shadowsocks-libev-debian.sh)
+
 [libsodium 安装](https://download.libsodium.org/doc/installation/index.html#integrity-checking)
+
+[不编译shadowsocks的文档](https://lixingcong.github.io/2016/07/20/compile-with-no-doc-for-shadowsocks/)

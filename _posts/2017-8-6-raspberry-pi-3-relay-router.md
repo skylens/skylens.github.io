@@ -32,6 +32,17 @@ iface wlan0 inet static
 
 $ sudo service networking restart
 $ sudo /etc/init.d/network restart
+$ sudo ifup wlan0
+```
+
++ 开启内核转发
+
+```shell
+$ sudo vim /etc/sysctl.d/99-sysctl.conf 
+net.ipv4.ip_forward = 1
+$ sudo sysctl -p
+net.ipv4.ip_forward = 1
+$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ```
 
 + 安装 hostapd
@@ -39,8 +50,28 @@ $ sudo /etc/init.d/network restart
 ```shell
 $ sudo apt-get install hostapd -y
 $ sudo vim /etc/hostapd/hostapd.conf
-$ sudo systemctl start hostapd.service
-$ sudo systemctl enable hostapd.service
+
+interface=wlan0
+driver=nl80211
+# ssid
+ssid=RaspberryAP
+hw_mode=g
+channel=6
+#ieee80211n=1
+macaddr_acl=0
+auth_algs=1
+ignore_broadcast_ssid=0
+wpa=2
+# password
+wpa_passphrase=1234567890
+wpa_key_mgmt=WPA-PSK
+#wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+ieee80211n=1          # 802.11n support
+wmm_enabled=1         # QoS support
+ht_capab=[HT40][SHORT-GI-20][DSSS_CCK-40]
+
+先不启动服务
 ```
 
 + 安装 DHCP
@@ -51,9 +82,16 @@ $ sudo systemctl enable hostapd.service
 $ sudo apt-get install dnsmasq
 $ cd /etc/
 $ sudo cp dnsmasq.conf dnsmasq.conf.orig
+$ sudo vim dnsmasq.conf
+
+interface=wlan0
+bind-interfaces
+dhcp-range=192.168.10.50,192.168.10.150,12h
+$ sudo /etc/init.d/dnsmasq reload
+$ sudo systemctl enable dnsmasq.service
 ```
 
-1. udhcpd 的 DHCP
+2. udhcpd 的 DHCP
 
 ```shell
 $ sudo apt-get install udhcpd -y
@@ -61,3 +99,17 @@ $ sudo vim /etc/udhcpd.conf
 $ sudo systemctl start udhcpd.service
 $ sudo systemctl enable udhcpd.service
 ```
+
+### 测试
+
+```shell
+$ sudo hostapd -d /etc/hostapd/hostapd.conf   #检查是否能连接上
+$ sudo vim /etc/default/hostapd
+
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+
+$ sudo systemctl start hostapd.service
+$ sudo systemctl enable hostapd.service
+```
+
+连接 RaspberryAP ，看能不能上网

@@ -24,6 +24,7 @@ $ sudo vim dnsmasq.conf
 resolv-file=/etc/resolv.dnsmasq.conf
 strict-order
 listen-address=192.168.1.102,127.0.0.1
+cache-size=2500
 
 $ sudo vim resolv.dnsmasq.conf
 
@@ -46,3 +47,16 @@ $ sudo apt-get install dnsutils
 $ dig @127.0.0.1 t.co
 $ nslookup www.google.com 127.0.0.1
 ```
+
+### 链接
+
+
+[树莓派用作DNS查询服务器实现上网加速](http://shumeipai.nxez.com/2015/02/03/use-your-raspberry-pi-as-dns-cache-to.html)
+
+[使用 Unbound 搭建更好用的 DNS 服务器](https://blog.phoenixlzx.com/2016/04/27/better-dns-with-unbound/)
+
+[加速OpenWRT路由器的DNS解析 – pdnsd代替dnsmasq](https://cokebar.info/archives/734)
+
+[pdnsd 使用 ](http://einverne.github.io/post/2016/12/pdnsd.html)
+
+[dnsmasq配合dnscrypt解决DNS污染openwrt](https://lixingcong.github.io/2016/05/01/DNSCrypt-with-dnsmasq/)

@@ -1,6 +1,6 @@
 ---
 layout: post_layout
-title: 把 Raspberry Pi 3 作为中中继路由器
+title: 把 Raspberry Pi 3 作为中继路由器
 time: 2017年8月6日 星期天
 location: 昆明
 pulished: true
@@ -53,7 +53,7 @@ $ cd /etc/
 $ sudo cp dnsmasq.conf dnsmasq.conf.orig
 ```
 
-2. udhcpd 的 DHCP
+1. udhcpd 的 DHCP
 
 ```shell
 $ sudo apt-get install udhcpd -y

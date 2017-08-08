@@ -1,7 +1,7 @@
 ---
 layout: post_layout
-title: 使用 Raspberry Pi 3 搭建本地 
-time: 2017年8月5日 星期六
+title: 使用 Raspberry Pi 3 搭建本地 DNS 服务器
+time: 2017年8月7日 星期一
 location: 昆明
 pulished: true
 excerpt_separator: "```"

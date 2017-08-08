@@ -1,5 +1,5 @@
 # Author settings
-name: 起得文
+name: xxx
 title: Linux 运维工程师
 address: 中国,昆明
 email: skylens116@qq.com
@@ -12,7 +12,7 @@ workHistory:
   title: Linux 运维
   started: 2015
   duration: (2015.4 - 2018.1)
-  description: 协助学院网络中心维护学院服务器，维护OpenStack集群
+  description: 协助学院网络中心维护学院服务器，维护 OpenStack 集群
 
 educationHistory:
 - education1:

@@ -51,9 +51,15 @@ $ sudo su
 # tar -xvf shadowsocks-libev-3.0.8.tar.gz && cd shadowsocks-libev-3.0.8
 # ./configure --disable-documentation
 # make && make install
-# cp debian/shadowsocks-libev-*.service /lib/systemd/system/
 # cp debian/config.json /etc/shadowsocks-libev/
 # vim /etc/shadowsocks-libev/config.json
+```
+
++ 启动服务
+
+```shell
+$ sudo ss-local -c /etc/shadowsocks-libev/config.josn -u
+$ sudo ss-tunnel -c /etc/shadowsocks-libev/config.josn -L 8.8.8.8:53 -u
 ```
 
 ### 尾巴

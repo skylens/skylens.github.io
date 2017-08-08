@@ -15,7 +15,7 @@ excerpt_separator: "```"
 
 + 下载
 
-1.下载最新的 shadowsocks-libev 版本
+1. 下载最新的 shadowsocks-libev 版本
 
 ```bash
 #!/bin/bash
@@ -25,7 +25,7 @@ download_link="https://github.com/shadowsocks/shadowsocks-libev/releases/downloa
 wget $download_link
 ``` 
 
-1.下载加密模块
+2. 下载加密模块
 
 ```shell
 $ wget https://github.com/jedisct1/libsodium/releases/download/1.0.13/libsodium-1.0.13.tar.gz 

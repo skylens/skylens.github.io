@@ -113,3 +113,10 @@ $ sudo systemctl enable hostapd.service
 ```
 
 连接 RaspberryAP ，看能不能上网
+
+
+### 链接
+
+[rPi3-ap-setup.sh](https://gist.github.com/Lewiscowles1986/fecd4de0b45b2029c390)
+
+[Raspberry Pi 3 - Configuring it as wireless access point -AP Mode](https://wiki.alpinelinux.org/wiki/Raspberry_Pi_3_-_Configuring_it_as_wireless_access_point_-AP_Mode)

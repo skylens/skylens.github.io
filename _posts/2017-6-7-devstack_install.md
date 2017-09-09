@@ -34,7 +34,7 @@ $ cd /etc/apt/
 $ sudo cp source.list source.list.bak
 $ sudo vim source.list
 $ sudo apt-get update
-$ sudo apt-get install git sudo python-pip -y
+$ sudo apt-get install git sudo python-pip tmux ntpdate -y
 ```
 
 - 安装DevStack

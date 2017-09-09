@@ -22,6 +22,8 @@ $ sudo chmod a+rx /usr/local/bin/youtube-dl
 
 **注意:`youtube-dl`在`fish shell`下效果不是很好，加了参数报错，建议使用`bash shell`**
 
+**注意:`youtube-dl`有时是视频和音频分离的，需要而外的添加`ffmpeg`来辅助音视频的合并**
+
 ```shell
 $ youtube-dl --proxy "socks5://127.0.0.1:1080" https://www.youtube.com/watch?v=xxxxx  //通过socks5协议来代理下载
 $ youtube-dl --proxy "socks5://127.0.0.1:1080" -F https://www.youtube.com/watch?v=xxxxx  //加-F参数 列出可下载的格式及信息

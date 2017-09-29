@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>virsh管理KVM虚拟机</title>
-  <meta name="description" content="介绍virsh是一款kvm的命令行管理工具用法及注意">
+  <title>Nginx 设置索引目录列表</title>
+  <meta name="description" content="前言Apache 有漂亮的索引目录列表，当然 Nginx 也有，但是 Nginx 默认是不开启的，怎么为 Nginx 打开索引目录列表呢？操作  安装 Nginx">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/27/KVM-virsh.html">
+  <link rel="canonical" href="http://localhost:4000/2017/08/24/nginx-filelist.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,28 +59,72 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">virsh管理KVM虚拟机</h1>
+                <h1 class="article-title">Nginx 设置索引目录列表</h1>
                 <p class="article-time">
-                    2017年5月27日 星期六,  发表于 <span>昆明</span>
+                    2017年8月24日 星期四,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="介绍">介绍</h3>
+            <h3 id="前言">前言</h3>
 
-<p><code class="highlighter-rouge">virsh</code>是一款kvm的命令行管理工具</p>
+<p>Apache 有漂亮的索引目录列表，当然 Nginx 也有，但是 Nginx 默认是不开启的，怎么为 Nginx 打开索引目录列表呢？</p>
 
-<h3 id="用法及注意">用法及注意</h3>
+<h3 id="操作">操作</h3>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># virsh list                //查看正在运行的虚拟机</span>
-<span class="c"># virsh list --all          //查看所有虚拟机</span>
-<span class="c"># virsh start vm1           //启动一个名为VM1的虚拟机</span>
-<span class="c"># virsh shutdown vm1        //关闭VM,需要在VM中安装acpid服务才可使用(默认最小化安装不可以)</span>
-<span class="c"># virsh destory vm1         //直接关闭VM的电源</span>
-<span class="c"># virsh suspend vm1         //挂起的VM，从远端的vnc连接是不会断开</span>
-<span class="c"># virsh resume vm1          //从挂起恢复的VM，vnc连接可以接着操作</span>
-<span class="c"># virsh define vm1          //定义虚拟机</span>
-<span class="c"># virsh undefine vm1        //取消虚拟机的定义</span>
+<ul>
+  <li>安装 Nginx</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt install nginx
 </code></pre>
 </div>
+
+<ul>
+  <li>配置 Nginx</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo vim /etc/nginx/sites-available/default
+...
+location / <span class="o">{</span>
+    autoindex on;   //开启目录浏览功能
+    autoindex_exact_size off;   //关闭详细文件大小统计，让文件大小显示MB、GB单位，默认为b
+    autoindex_localtime on;   //开启以服务器本地时区显示文件修改日期
+    ...                
+<span class="o">}</span>
+...
+
+<span class="gp">$ </span>sudo /etc/init.d/nginx reload
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>做上面的配置你已经打开了 Nginx 的索引目录列表功能，但是你想索引目录列表漂亮一点</p>
+
+    <ul>
+      <li>安装 Nginx 拓展(里面有一款 Nginx 的索引目录列表的主题)</li>
+    </ul>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>  <span class="nv">$ </span>sudo apt install nginx-extras
+</code></pre>
+    </div>
+
+    <ul>
+      <li>修改之前的配置(当然要把刚刚的配置删除了，做新的修改才会加载新的主题)</li>
+    </ul>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code>  <span class="nv">$ </span>sudo vim /etc/nginx/sites-available/default
+  ...
+  location / <span class="o">{</span>
+      fancyindex on;
+      fancyindex_exact_size off;
+      fancyindex_localtime on;
+      ...                
+  <span class="o">}</span>
+    
+</code></pre>
+    </div>
+  </li>
+</ul>
 
             <footer class="article-footer">
     <div class="authorimage">

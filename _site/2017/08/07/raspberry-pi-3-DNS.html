@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>virsh管理KVM虚拟机</title>
-  <meta name="description" content="介绍virsh是一款kvm的命令行管理工具用法及注意">
+  <title>使用 Raspberry Pi 3 搭建本地 DNS 服务器</title>
+  <meta name="description" content="前言使用 Raspberry Pi 3 搭建本地的 DNS server，来解决 DNS 污染的问题，并加速 DNS 查询，从而提升上网体验，当然了你也可以使用一些无污染的 DNS ，比如中科大的 DNS （202.38.93.153,202.141.162.123）配置  dnsmasq">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/27/KVM-virsh.html">
+  <link rel="canonical" href="http://localhost:4000/2017/08/07/raspberry-pi-3-DNS.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,28 +59,65 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">virsh管理KVM虚拟机</h1>
+                <h1 class="article-title">使用 Raspberry Pi 3 搭建本地 DNS 服务器</h1>
                 <p class="article-time">
-                    2017年5月27日 星期六,  发表于 <span>昆明</span>
+                    2017年8月7日 星期一,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="介绍">介绍</h3>
+            <h3 id="前言">前言</h3>
 
-<p><code class="highlighter-rouge">virsh</code>是一款kvm的命令行管理工具</p>
+<p>使用 Raspberry Pi 3 搭建本地的 DNS server，来解决 DNS 污染的问题，并加速 DNS 查询，从而提升上网体验，当然了你也可以使用一些无污染的 DNS ，比如中科大的 DNS （202.38.93.153,202.141.162.123）</p>
 
-<h3 id="用法及注意">用法及注意</h3>
+<h3 id="配置">配置</h3>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># virsh list                //查看正在运行的虚拟机</span>
-<span class="c"># virsh list --all          //查看所有虚拟机</span>
-<span class="c"># virsh start vm1           //启动一个名为VM1的虚拟机</span>
-<span class="c"># virsh shutdown vm1        //关闭VM,需要在VM中安装acpid服务才可使用(默认最小化安装不可以)</span>
-<span class="c"># virsh destory vm1         //直接关闭VM的电源</span>
-<span class="c"># virsh suspend vm1         //挂起的VM，从远端的vnc连接是不会断开</span>
-<span class="c"># virsh resume vm1          //从挂起恢复的VM，vnc连接可以接着操作</span>
-<span class="c"># virsh define vm1          //定义虚拟机</span>
-<span class="c"># virsh undefine vm1        //取消虚拟机的定义</span>
+<ul>
+  <li>dnsmasq</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install dnsmasq
+<span class="gp">$ </span><span class="nb">cd</span> /etc/
+<span class="gp">$ </span>sudo cp dnsmasq.conf dnsmasq.conf.orig
+<span class="gp">$ </span>sudo vim dnsmasq.conf
+
+resolv-file<span class="o">=</span>/etc/resolv.dnsmasq.conf
+strict-order
+listen-address<span class="o">=</span>192.168.1.102,127.0.0.1
+cache-size<span class="o">=</span>2500
+
+<span class="gp">$ </span>sudo vim resolv.dnsmasq.conf
+
+nameserver 202.38.93.153 
+nameserver 202.141.162.123
+
+<span class="gp">$ </span>sudo vim resolv.conf
+
+nameserver 127.0.0.1
+
+<span class="gp">$ </span>sudo chattr +i resolv.conf
+<span class="gp">$ </span>sudo /etc/init.d/dnsmasq reload
+<span class="gp">$ </span>sudo systemctl <span class="nb">enable </span>dnsmasq
 </code></pre>
 </div>
+
+<h3 id="测试">测试</h3>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install dnsutils
+<span class="gp">$ </span>dig @127.0.0.1 t.co
+<span class="gp">$ </span>nslookup www.google.com 127.0.0.1
+</code></pre>
+</div>
+
+<h3 id="链接">链接</h3>
+
+<p><a href="http://shumeipai.nxez.com/2015/02/03/use-your-raspberry-pi-as-dns-cache-to.html">树莓派用作DNS查询服务器实现上网加速</a></p>
+
+<p><a href="https://blog.phoenixlzx.com/2016/04/27/better-dns-with-unbound/">使用 Unbound 搭建更好用的 DNS 服务器</a></p>
+
+<p><a href="https://cokebar.info/archives/734">加速OpenWRT路由器的DNS解析 – pdnsd代替dnsmasq</a></p>
+
+<p><a href="http://einverne.github.io/post/2016/12/pdnsd.html">pdnsd 使用 </a></p>
+
+<p><a href="https://lixingcong.github.io/2016/05/01/DNSCrypt-with-dnsmasq/">dnsmasq配合dnscrypt解决DNS污染openwrt</a></p>
 
             <footer class="article-footer">
     <div class="authorimage">

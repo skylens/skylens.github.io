@@ -64,6 +64,377 @@
 <article class="preview">
     <header>
         <h2 class="post-title">
+            <a href="/2017/09/24/lvm.html">  LVM逻辑卷管理器 </a>
+        </h2>
+        <p class="post-time"> 2017年9月24日 星期天</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="扯淡">扯淡</h3>
+
+<p>已经一个月没有写博客了，感觉每天都浑浑噩噩的，今天重新填坑。今天学一下 LVM (逻辑卷管理)。</p>
+
+<h3 id="前言">前言</h3>
+
+<p>LVM 是 Linux 系统中对硬盘分区进行管理的一种机制，解决了传统硬盘分区创建后不易改变其大小的问题，可以对分区进行扩容和缩小，而且保证数据的安全。LVM 逻辑卷管理器是在磁盘分区和文件系统之间添加的逻辑层，它提供了一个抽象的卷组，可以使得多块硬盘进行卷组合并，让用户不必关心物理硬盘设备的底层结构，从而实现对分区的灵活动态调整。</p>
+
+<h3 id="简介">简介</h3>
+
+<p>LVM是在磁盘分区和文件系统之间添加的一个逻辑层，来为文件系统屏蔽下层磁盘分区布局，提供一个抽象的盘卷，在盘卷上建立文件系统。</p>
+
+<p><img src="/assets/post_pictures/lvm.png" width="650" /></p>
+<h5 align="center">LVM 逻辑卷管理器的技术结构</h5>
+<p> </p>
+
+<p><strong>常用术语：</strong></p>
+
+<ol>
+  <li>物理存储介质（The physical media）：这里指系统的存储设备：硬盘，如：/dev/hda1、/dev/sda等等，是存储系统最低层的存储单元。</li>
+  <li>物理卷（physical volume）：物理卷就是指硬盘分区或从逻辑上与磁盘分区具有同样功能的设备(如RAID)，是LVM的基本存储逻辑块，但和基本的物理存储介质（如分区、磁盘等）比较，却包含有与LVM相关的管理参数。</li>
+  <li>卷组（Volume Group）：LVM卷组类似于非LVM系统中的物理硬盘，其由物理卷组成。可以在卷组上创建一个或多个“LVM分区”（逻辑卷），LVM卷组由一个或多个物理卷组成。</li>
+  <li>逻辑卷（logical volume）：LVM的逻辑卷类似于非LVM系统中的硬盘分区，在逻辑卷之上可以建立文件系统(比如/home或者/usr等)。</li>
+  <li>PE（physical extent）：每一个物理卷被划分为称为PE(Physical Extents)的基本单元，具有唯一编号的PE是可以被LVM寻址的最小单元。PE的大小是可配置的，默认为4MB。</li>
+  <li>LE（logical extent）：逻辑卷也被划分为被称为LE(Logical Extents) 的可被寻址的基本单位。在同一个卷组中，LE的大小和PE是相同的，并且一一对应。</li>
+</ol>
+
+<h3 id="相关命令">相关命令</h3>
+
+<p> 
+<img src="/assets/post_pictures/lvm_commond.png" width="650" />
+ </p>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/09/24/lvm.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/08/24/nginx-filelist.html">  Nginx 设置索引目录列表 </a>
+        </h2>
+        <p class="post-time"> 2017年8月24日 星期四</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="前言">前言</h3>
+
+<p>Apache 有漂亮的索引目录列表，当然 Nginx 也有，但是 Nginx 默认是不开启的，怎么为 Nginx 打开索引目录列表呢？</p>
+
+<h3 id="操作">操作</h3>
+
+<ul>
+  <li>安装 Nginx</li>
+</ul>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/08/24/nginx-filelist.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/08/21/OpenStack-Windows-Server-image.html">  在 CentOS 下制作 Windows Server 2012 R2 镜像 </a>
+        </h2>
+        <p class="post-time"> 2017年8月21日 星期一</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="前言">前言</h3>
+
+<p>在 CentOS 下制作 OpenStack 的 Windows Server 2012 R2 的虚拟机镜像</p>
+
+<h3 id="准备">准备</h3>
+
+<ul>
+  <li>安装软件并启动服务</li>
+</ul>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/08/21/OpenStack-Windows-Server-image.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/08/07/raspberry-pi-3-DNS.html">  使用 Raspberry Pi 3 搭建本地 DNS 服务器 </a>
+        </h2>
+        <p class="post-time"> 2017年8月7日 星期一</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="前言">前言</h3>
+
+<p>使用 Raspberry Pi 3 搭建本地的 DNS server，来解决 DNS 污染的问题，并加速 DNS 查询，从而提升上网体验，当然了你也可以使用一些无污染的 DNS ，比如中科大的 DNS （202.38.93.153,202.141.162.123）</p>
+
+<h3 id="配置">配置</h3>
+
+<ul>
+  <li>dnsmasq</li>
+</ul>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/08/07/raspberry-pi-3-DNS.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/08/06/raspberry-pi-3-relay-router.html">  把 Raspberry Pi 3 作为中继路由器 </a>
+        </h2>
+        <p class="post-time"> 2017年8月6日 星期天</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="前言">前言</h3>
+
+<p>把 Raspberry Pi 3 作为中继路由器，Raspberry Pi 3 有一个以太网接口，搭载了一块无线网卡，满足了用来作中继路由器的条件</p>
+
+<h3 id="准备">准备</h3>
+
+<ul>
+  <li>设置无线网卡使用静态 IP</li>
+</ul>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/08/06/raspberry-pi-3-relay-router.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/08/04/shadowsocks-libev-configure.html">  编译安装 shadowsocks-libev </a>
+        </h2>
+        <p class="post-time"> 2017年8月4日 星期五</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="前言">前言</h3>
+
+<p>在 Raspberry Pi 3 上编译安装 shadowsocks-libev ，实现透明代理</p>
+
+<h3 id="准备">准备</h3>
+
+<ul>
+  <li>下载</li>
+</ul>
+
+<ol>
+  <li>下载最新的 shadowsocks-libev 版本</li>
+</ol>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/08/04/shadowsocks-libev-configure.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/07/25/cmd-fonts.html">  更改Windows10的终端字体 </a>
+        </h2>
+        <p class="post-time"> 2017年7月25日 星期二</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <p><strong>先下载并安装<a href="https://github.com/yakumioto/YaHei-Consolas-Hybrid-1.12"><code class="highlighter-rouge">YaHei Consolas Hybrid</code></a>字体</strong></p>
+
+<p><strong>win + R -&gt; regedit</strong></p>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/07/25/cmd-fonts.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/07/23/openvpn-config.html">  编译安装openvpn </a>
+        </h2>
+        <p class="post-time"> 2017年7月23日 星期天</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="前言">前言</h3>
+
+<p>在centos7(需要两块网卡)上编译安装openvpn，采用VMware虚拟机做为实验环境，CentOS 7 作为 VPN Server，windows10作为客户端</p>
+
+<h3 id="开始">开始</h3>
+
+<ul>
+  <li>规划</li>
+</ul>
+
+<p><br />
+<img src="/assets/post_pictures/open-config.png" width="650" />
+ 
+<br /></p>
+
+<ul>
+  <li>安装</li>
+</ul>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/07/23/openvpn-config.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/07/19/pptp-server.html">  pptp VPN 服务器搭建 </a>
+        </h2>
+        <p class="post-time"> 2017年7月19日 星期三</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="前言">前言</h3>
+
+<p>在ubuntu server 14.04上搭建pptp VPN服务</p>
+
+<h3 id="安装">安装</h3>
+
+<ul>
+  <li>pptpd安装</li>
+</ul>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/07/19/pptp-server.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/07/19/Ldap-configure.html">  编译安装ldap </a>
+        </h2>
+        <p class="post-time"> 2017年7月19日 星期三</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="前言">前言</h3>
+
+<p>在ubuntu server 14.04下编译安装ldap服务</p>
+
+<h3 id="开始">开始</h3>
+
+<ul>
+  <li>准备</li>
+</ul>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/07/19/Ldap-configure.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/07/18/LNP-configure.html">  简单编译安装nginx和php </a>
+        </h2>
+        <p class="post-time"> 2017年7月18日 星期二</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <h3 id="前言">前言</h3>
+
+<p>本次实验的平台为ubuntu-server-14.04</p>
+
+<h3 id="开始编译安装">开始编译安装</h3>
+
+<ul>
+  <li>安装编译软件</li>
+</ul>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/07/18/LNP-configure.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
             <a href="/2017/07/07/macOS-install.html">  macOS 启动盘制作 </a>
         </h2>
         <p class="post-time"> 2017年7月7日 星期五</p>
@@ -583,7 +954,12 @@
         <p>
             <p>fish是一款开箱即用的shell</p>
 
-<h3 id="安装">安装</h3>
+<h3 id="注意">注意</h3>
+
+<p>如果你打算安装<a href="https://github.com/oh-my-fish/oh-my-fish/"><code class="highlighter-rouge">oh-my-fish</code></a>,那么你的 fish shell 
+必须是 2.2.0 以上的版本, git 必须是 1.9.0 以上的版本, 有可能需要编译安装真两个软件</p>
+
+<h3 id="编译安装使用-ubuntu-server-1404-遇到的坑">编译安装（使用 ubuntu server 14.04 遇到的坑）</h3>
 
 
         </p>
@@ -1050,6 +1426,33 @@
         </p>
         <p class="readmore">
             <a href="/2017/05/10/jellky.html">
+                阅读全文
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </a>
+        </p>
+    </section>
+
+</article>
+
+<article class="preview">
+    <header>
+        <h2 class="post-title">
+            <a href="/2017/05/10/first.html">  再次折腾 Jekyll </a>
+        </h2>
+        <p class="post-time"> 2017年5月10日 星期三</p>
+    </header>
+    <section class="post-section">
+        <p>
+            <p>在一年之后我决定再次折腾jekyll，重新开始写博客，记录每一天。</p>
+
+<p>一转眼大学四年快过去了，现在大三的我整天浑浑噩噩，虽然每天都在上课，都在折腾linux，但没有目标，这不免让我对自己的未来有一丝担忧。</p>
+
+<p>我决定从今天起，每天写一篇博客，扯淡也好，记录自己的学习笔记也好，总之每天都提醒自己一下，希望每天都能得到一点提高！</p>
+
+
+        </p>
+        <p class="readmore">
+            <a href="/2017/05/10/first.html">
                 阅读全文
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
             </a>

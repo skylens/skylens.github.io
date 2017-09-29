@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>virsh管理KVM虚拟机</title>
-  <meta name="description" content="介绍virsh是一款kvm的命令行管理工具用法及注意">
+  <title>再次折腾 Jekyll</title>
+  <meta name="description" content="在一年之后我决定再次折腾jekyll，重新开始写博客，记录每一天。一转眼大学四年快过去了，现在大三的我整天浑浑噩噩，虽然每天都在上课，都在折腾linux，但没有目标，这不免让我对自己的未来有一丝担忧。我决定从今天起，每天写一篇博客，扯淡也好，记录自己的学习笔记也好，总之每天都提醒自己一下，希望每天都能得到一点提高！">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/27/KVM-virsh.html">
+  <link rel="canonical" href="http://localhost:4000/2017/05/10/first.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,28 +59,17 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">virsh管理KVM虚拟机</h1>
+                <h1 class="article-title">再次折腾 Jekyll</h1>
                 <p class="article-time">
-                    2017年5月27日 星期六,  发表于 <span>昆明</span>
+                    2017年5月10日 星期三,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="介绍">介绍</h3>
+            <p>在一年之后我决定再次折腾jekyll，重新开始写博客，记录每一天。</p>
 
-<p><code class="highlighter-rouge">virsh</code>是一款kvm的命令行管理工具</p>
+<p>一转眼大学四年快过去了，现在大三的我整天浑浑噩噩，虽然每天都在上课，都在折腾linux，但没有目标，这不免让我对自己的未来有一丝担忧。</p>
 
-<h3 id="用法及注意">用法及注意</h3>
+<p>我决定从今天起，每天写一篇博客，扯淡也好，记录自己的学习笔记也好，总之每天都提醒自己一下，希望每天都能得到一点提高！</p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># virsh list                //查看正在运行的虚拟机</span>
-<span class="c"># virsh list --all          //查看所有虚拟机</span>
-<span class="c"># virsh start vm1           //启动一个名为VM1的虚拟机</span>
-<span class="c"># virsh shutdown vm1        //关闭VM,需要在VM中安装acpid服务才可使用(默认最小化安装不可以)</span>
-<span class="c"># virsh destory vm1         //直接关闭VM的电源</span>
-<span class="c"># virsh suspend vm1         //挂起的VM，从远端的vnc连接是不会断开</span>
-<span class="c"># virsh resume vm1          //从挂起恢复的VM，vnc连接可以接着操作</span>
-<span class="c"># virsh define vm1          //定义虚拟机</span>
-<span class="c"># virsh undefine vm1        //取消虚拟机的定义</span>
-</code></pre>
-</div>
 
             <footer class="article-footer">
     <div class="authorimage">

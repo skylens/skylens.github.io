@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>配置使用fish</title>
-  <meta name="description" content="fish是一款开箱即用的shell安装">
+  <meta name="description" content="fish是一款开箱即用的shell注意如果你打算安装oh-my-fish,那么你的 fish shell 必须是 2.2.0 以上的版本, git 必须是 1.9.0 以上的版本, 有可能需要编译安装真两个软件编译安装（使用 ubuntu server 14.04 遇到的坑）">
 
   <link rel="canonical" href="http://localhost:4000/2017/05/21/fish.html">
 
@@ -66,6 +66,34 @@
             </header>
             <p>fish是一款开箱即用的shell</p>
 
+<h3 id="注意">注意</h3>
+
+<p>如果你打算安装<a href="https://github.com/oh-my-fish/oh-my-fish/"><code class="highlighter-rouge">oh-my-fish</code></a>,那么你的 fish shell 
+必须是 2.2.0 以上的版本, git 必须是 1.9.0 以上的版本, 有可能需要编译安装真两个软件</p>
+
+<h3 id="编译安装使用-ubuntu-server-1404-遇到的坑">编译安装（使用 ubuntu server 14.04 遇到的坑）</h3>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>编译安装 fish
+<span class="gp">$ </span>sudo apt-get install build-essential ncurses-dev libncurses5-dev gettext autoconf
+<span class="gp">$ </span>wget http://www.fishshell.com/files/2.5.0/fish-2.5.0.tar.gz
+<span class="gp">$ </span>tar -xvf fish-2.5.0.tar.gz
+<span class="gp">$ </span><span class="nb">cd </span>fish-2.5.0
+<span class="gp">$ </span>autoreconf --no-recursive
+<span class="gp">$ </span>./configure   //不用加参数，使用默认的就行了
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo make install
+
+编译安装 git
+<span class="gp">$ </span>sudo apt-get update
+<span class="gp">$ </span>sudo apt-get install build-essential libssl-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip
+<span class="gp">$ </span>wget https://www.kernel.org/pub/software/scm/git/git-2.9.4.tar.gz
+<span class="gp">$ </span>tar -xvf git-2.9.4.tar.gz
+<span class="gp">$ </span><span class="nb">cd </span>git-2.9.4
+<span class="gp">$ </span>make <span class="nv">prefix</span><span class="o">=</span>/usr/local all
+<span class="gp">$ </span>sudo make <span class="nv">prefix</span><span class="o">=</span>/usr/local install
+</code></pre>
+</div>
+
 <h3 id="安装">安装</h3>
 
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install fish  //Debian/ubuntu
@@ -76,6 +104,7 @@
 <h3 id="配置">配置</h3>
 
 <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>chsh -s /usr/bin/fish  //设置fish为默认shell
+如果是编译安装,直接把 passwd 中的 shell 改为 /usr/local/bin/fish
 <span class="gp">$ </span>fish_config  //在浏览器中打开配置界面
 </code></pre>
 </div>
@@ -83,7 +112,7 @@
 <h3 id="安装oh-my-fish">安装<a href="https://github.com/oh-my-fish/oh-my-fish/blob/master/docs/zh-CN/README.md"><code class="highlighter-rouge">oh-my-fish</code></a></h3>
 
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>curl -L github.com/oh-my-fish/oh-my-fish/raw/master/bin/install | fish  //安装
-<span class="gp">$ </span>omf theme robbyrussell  //安装robbyrussell主题
+<span class="gp">$ </span>omf install robbyrussell  //安装robbyrussell主题
 </code></pre>
 </div>
 
@@ -110,6 +139,12 @@
   </li>
   <li>
     <p><a href="https://fishshell.com/docs/current/tutorial.html">fishshell</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/fish-shell/fish-shell/blob/master/README.md#autotools-build">fish shell 编译安装</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-14-04">How To Install Git on Ubuntu 14.04</a></p>
   </li>
 </ul>
 

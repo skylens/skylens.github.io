@@ -79,6 +79,8 @@
 
 <p><strong>注意:<code class="highlighter-rouge">youtube-dl</code>在<code class="highlighter-rouge">fish shell</code>下效果不是很好，加了参数报错，建议使用<code class="highlighter-rouge">bash shell</code></strong></p>
 
+<p><strong>注意:<code class="highlighter-rouge">youtube-dl</code>有时是视频和音频分离的，需要而外的添加<code class="highlighter-rouge">ffmpeg</code>来辅助音视频的合并</strong></p>
+
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>youtube-dl --proxy <span class="s2">"socks5://127.0.0.1:1080"</span> https://www.youtube.com/watch?v<span class="o">=</span>xxxxx  //通过socks5协议来代理下载
 <span class="gp">$ </span>youtube-dl --proxy <span class="s2">"socks5://127.0.0.1:1080"</span> -F https://www.youtube.com/watch?v<span class="o">=</span>xxxxx  //加-F参数 列出可下载的格式及信息
 <span class="gp">$ </span>youtube-dl --proxy <span class="s2">"socks5://127.0.0.1:1080"</span> -f 22 https://www.youtube.com/watch?v<span class="o">=</span>xxxxx  //加-f 22参数 从上面的可下载的格式及信息中选择对应的format编号

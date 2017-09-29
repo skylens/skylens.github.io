@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>virsh管理KVM虚拟机</title>
-  <meta name="description" content="介绍virsh是一款kvm的命令行管理工具用法及注意">
+  <title>更改Windows10的终端字体</title>
+  <meta name="description" content="先下载并安装YaHei Consolas Hybrid字体win + R -&gt; regedit">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/27/KVM-virsh.html">
+  <link rel="canonical" href="http://localhost:4000/2017/07/25/cmd-fonts.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,28 +59,29 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">virsh管理KVM虚拟机</h1>
+                <h1 class="article-title">更改Windows10的终端字体</h1>
                 <p class="article-time">
-                    2017年5月27日 星期六,  发表于 <span>昆明</span>
+                    2017年7月25日 星期二,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="介绍">介绍</h3>
+            <p><strong>先下载并安装<a href="https://github.com/yakumioto/YaHei-Consolas-Hybrid-1.12"><code class="highlighter-rouge">YaHei Consolas Hybrid</code></a>字体</strong></p>
 
-<p><code class="highlighter-rouge">virsh</code>是一款kvm的命令行管理工具</p>
+<p><strong>win + R -&gt; regedit</strong></p>
 
-<h3 id="用法及注意">用法及注意</h3>
-
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># virsh list                //查看正在运行的虚拟机</span>
-<span class="c"># virsh list --all          //查看所有虚拟机</span>
-<span class="c"># virsh start vm1           //启动一个名为VM1的虚拟机</span>
-<span class="c"># virsh shutdown vm1        //关闭VM,需要在VM中安装acpid服务才可使用(默认最小化安装不可以)</span>
-<span class="c"># virsh destory vm1         //直接关闭VM的电源</span>
-<span class="c"># virsh suspend vm1         //挂起的VM，从远端的vnc连接是不会断开</span>
-<span class="c"># virsh resume vm1          //从挂起恢复的VM，vnc连接可以接着操作</span>
-<span class="c"># virsh define vm1          //定义虚拟机</span>
-<span class="c"># virsh undefine vm1        //取消虚拟机的定义</span>
+<div class="highlighter-rouge"><pre class="highlight"><code>计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont
 </code></pre>
 </div>
+
+<p><strong>新建一个字符串值</strong></p>
+
+<p><strong>修改值为<code class="highlighter-rouge">YaHei Consolas Hybrid</code></strong></p>
+
+<p><strong>效果图</strong></p>
+
+<p><br />
+<img src="/assets/post_pictures/cmd_font.png" width="650" />
+ 
+<br /></p>
 
             <footer class="article-footer">
     <div class="authorimage">

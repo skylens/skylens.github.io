@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>virsh管理KVM虚拟机</title>
-  <meta name="description" content="介绍virsh是一款kvm的命令行管理工具用法及注意">
+  <title>pptp VPN 服务器搭建</title>
+  <meta name="description" content="前言在ubuntu server 14.04上搭建pptp VPN服务安装  pptpd安装">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/27/KVM-virsh.html">
+  <link rel="canonical" href="http://localhost:4000/2017/07/19/pptp-server.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,26 +59,94 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">virsh管理KVM虚拟机</h1>
+                <h1 class="article-title">pptp VPN 服务器搭建</h1>
                 <p class="article-time">
-                    2017年5月27日 星期六,  发表于 <span>昆明</span>
+                    2017年7月19日 星期三,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="介绍">介绍</h3>
+            <h3 id="前言">前言</h3>
 
-<p><code class="highlighter-rouge">virsh</code>是一款kvm的命令行管理工具</p>
+<p>在ubuntu server 14.04上搭建pptp VPN服务</p>
 
-<h3 id="用法及注意">用法及注意</h3>
+<h3 id="安装">安装</h3>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># virsh list                //查看正在运行的虚拟机</span>
-<span class="c"># virsh list --all          //查看所有虚拟机</span>
-<span class="c"># virsh start vm1           //启动一个名为VM1的虚拟机</span>
-<span class="c"># virsh shutdown vm1        //关闭VM,需要在VM中安装acpid服务才可使用(默认最小化安装不可以)</span>
-<span class="c"># virsh destory vm1         //直接关闭VM的电源</span>
-<span class="c"># virsh suspend vm1         //挂起的VM，从远端的vnc连接是不会断开</span>
-<span class="c"># virsh resume vm1          //从挂起恢复的VM，vnc连接可以接着操作</span>
-<span class="c"># virsh define vm1          //定义虚拟机</span>
-<span class="c"># virsh undefine vm1        //取消虚拟机的定义</span>
+<ul>
+  <li>pptpd安装</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install pptpd
+</code></pre>
+</div>
+
+<ul>
+  <li>设置localip和remoteip</li>
+</ul>
+
+<p>(根据实际情况来设置)</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># nano /etc/pptpd.conf</span>
+
+localip 192.168.0.1
+remoteip 192.168.0.100-200
+
+</code></pre>
+</div>
+
+<ul>
+  <li>用户名密码设置</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># nano /etc/ppp/chap-secrets</span>
+
+admin pptpd admin123 <span class="k">*</span>
+
+</code></pre>
+</div>
+
+<ul>
+  <li>DNS服务器设置</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># nano /etc/ppp/pptpd-options</span>
+
+ms-dns 114.114.114.114
+ms-dns 114.114.115.115
+
+</code></pre>
+</div>
+
+<ul>
+  <li>重启服务</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># service pptpd restart</span>
+</code></pre>
+</div>
+
+<ul>
+  <li></li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># nano /etc/sysctl.conf</span>
+
+net.ipv4.ip_forward<span class="o">=</span>1
+
+<span class="c"># sysctl -p</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>iptables设置</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>
+<span class="c"># iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source VPS的IP地址</span>
+
+<span class="c"># iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span>
+<span class="c"># iptables --table nat --append POSTROUTING --out-interface ppp0 -j MASQUERADE</span>
+<span class="c"># iptables -I INPUT -s 192.168.0.0/24 -i ppp0 -j ACCEPT</span>
+<span class="c"># iptables --append FORWARD --in-interface eth0 -j ACCEPT</span>
+<span class="c"># iptables-save &gt; firewall</span>
 </code></pre>
 </div>
 

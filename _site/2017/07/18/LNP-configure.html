@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>virsh管理KVM虚拟机</title>
-  <meta name="description" content="介绍virsh是一款kvm的命令行管理工具用法及注意">
+  <title>简单编译安装nginx和php</title>
+  <meta name="description" content="前言本次实验的平台为ubuntu-server-14.04开始编译安装  安装编译软件">
 
-  <link rel="canonical" href="http://localhost:4000/2017/05/27/KVM-virsh.html">
+  <link rel="canonical" href="http://localhost:4000/2017/07/18/LNP-configure.html">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
@@ -59,26 +59,60 @@
 
         <main class="blogmain">
             <header>
-                <h1 class="article-title">virsh管理KVM虚拟机</h1>
+                <h1 class="article-title">简单编译安装nginx和php</h1>
                 <p class="article-time">
-                    2017年5月27日 星期六,  发表于 <span>昆明</span>
+                    2017年7月18日 星期二,  发表于 <span>昆明</span>
                 </p>
             </header>
-            <h3 id="介绍">介绍</h3>
+            <h3 id="前言">前言</h3>
 
-<p><code class="highlighter-rouge">virsh</code>是一款kvm的命令行管理工具</p>
+<p>本次实验的平台为ubuntu-server-14.04</p>
 
-<h3 id="用法及注意">用法及注意</h3>
+<h3 id="开始编译安装">开始编译安装</h3>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># virsh list                //查看正在运行的虚拟机</span>
-<span class="c"># virsh list --all          //查看所有虚拟机</span>
-<span class="c"># virsh start vm1           //启动一个名为VM1的虚拟机</span>
-<span class="c"># virsh shutdown vm1        //关闭VM,需要在VM中安装acpid服务才可使用(默认最小化安装不可以)</span>
-<span class="c"># virsh destory vm1         //直接关闭VM的电源</span>
-<span class="c"># virsh suspend vm1         //挂起的VM，从远端的vnc连接是不会断开</span>
-<span class="c"># virsh resume vm1          //从挂起恢复的VM，vnc连接可以接着操作</span>
-<span class="c"># virsh define vm1          //定义虚拟机</span>
-<span class="c"># virsh undefine vm1        //取消虚拟机的定义</span>
+<ul>
+  <li>安装编译软件</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install gcc make
+</code></pre>
+</div>
+
+<ul>
+  <li>编译安装nginx</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>//安装zlib依赖
+<span class="gp">$ </span>wget https://nchc.dl.sourceforge.net/project/libpng/zlib/1.2.11/zlib-1.2.11.tar.gz
+<span class="gp">$ </span>tar -xvf zlib-1.2.11.tar.gz
+<span class="gp">$ </span><span class="nb">cd </span>zlib-1.2.11/
+<span class="gp">$ </span>./configure --prefix<span class="o">=</span>/usr/local/zlib/
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo make install
+//安装其他的依赖
+<span class="gp">$ </span>sudo apt-get install libpcre3 libpcre3-dev openssl libssl-dev -y
+//正式开始安装nginx
+<span class="gp">$ </span>wget http://nginx.org/download/nginx-1.12.1.tar.gz
+<span class="gp">$ </span>tar -xvf nginx-1.12.1.tar.gz
+<span class="gp">$ </span><span class="nb">cd </span>nginx-1.12.1/
+<span class="gp">$ </span>./configure --prefix<span class="o">=</span>/usr/local/nginx/
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo make install
+</code></pre>
+</div>
+<ul>
+  <li>编译安装PHP</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>wget http://php.net/distributions/php-7.1.7.tar.bz2
+<span class="gp">$ </span>tar -xvf php-7.1.7.tar.bz2
+//安装依赖
+<span class="gp">$ </span>sudo apt-get install -y libxml2 libxml2-dev
+<span class="gp">$ </span><span class="nb">cd </span>php-7.1.7/
+<span class="gp">$ </span>./configure --prefix<span class="o">=</span>/usr/local/php/ --enable-fpm
+<span class="gp">$ </span>make 
+<span class="gp">$ </span>make <span class="nb">test</span>
+<span class="gp">$ </span>sudo make install
 </code></pre>
 </div>
 

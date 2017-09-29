@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>编译安装openvpn</title>
+  <meta name="description" content="前言在centos7(需要两块网卡)上编译安装openvpn，采用VMware虚拟机做为实验环境，CentOS 7 作为 VPN Server，windows10作为客户端开始  规划   安装">
+
+  <link rel="canonical" href="http://localhost:4000/2017/07/23/openvpn-config.html">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/blog.css" >
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon.ico">
+
+  <!-- Google fonts -->
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:300' type='text/css'>
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Source+Sans+Pro' type='text/css'>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.min.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+    <body>
+        <header class="bloghead">
+    <dev class="authorheader">
+        <a href="/">
+            <img alt="My Avatar" src="/assets/img/bsd.jpg"/>
+        </a>
+        <dev class="blogtitle">
+            <h1><a href="/main.html">skylens</a></h1>
+            <h5> (●´ω`●)/ </h5>
+        </dev>
+    </dev>
+
+    <nav class="menu" role="nav">
+        <ul>
+            <li><a href="/main.html">Home</a></li>
+            <li>|</li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="https://github.com/skylens">GitHub</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="/about.html">About Me</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+        <main class="blogmain">
+            <header>
+                <h1 class="article-title">编译安装openvpn</h1>
+                <p class="article-time">
+                    2017年7月23日 星期天,  发表于 <span>昆明</span>
+                </p>
+            </header>
+            <h3 id="前言">前言</h3>
+
+<p>在centos7(需要两块网卡)上编译安装openvpn，采用VMware虚拟机做为实验环境，CentOS 7 作为 VPN Server，windows10作为客户端</p>
+
+<h3 id="开始">开始</h3>
+
+<ul>
+  <li>规划</li>
+</ul>
+
+<p><br />
+<img src="/assets/post_pictures/open-config.png" width="650" />
+ 
+<br /></p>
+
+<ul>
+  <li>
+    <p>安装</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># yum install wget gcc make openssl* vim -y </span>
+<span class="c"># mkdir openvpn</span>
+<span class="c"># cd openvpn</span>
+<span class="c"># wget http://www.oberhumer.com/opensource/lzo/download/lzo-2.06.tar.gz</span>
+<span class="c"># tar -xvf lzo-2.06.tar.gz</span>
+<span class="c"># cd lzo-2.06</span>
+<span class="c"># ./configure</span>
+<span class="c"># make</span>
+<span class="c"># make install</span>
+<span class="c"># cd ..</span>
+<span class="c"># wget http://swupdate.openvpn.org/community/releases/openvpn-2.2.2.tar.gz</span>
+<span class="c"># cd openvpn-2.2.2</span>
+<span class="c"># ./configure --with-lzo-headers=/usr/local/include --with-lzo-lib=/usr/local/lib</span>
+<span class="c"># make</span>
+<span class="c"># make install</span>
+<span class="c"># which openvpn</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>生成证书</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># cd easy-rsa/2.0</span>
+<span class="c"># cp var var.bak</span>
+<span class="c"># vim var</span>
+//修改如下内容
+<span class="nb">export </span><span class="nv">KEY_COUNTRY</span><span class="o">=</span><span class="s2">"CN"</span>
+<span class="nb">export </span><span class="nv">KEY_PROVINCE</span><span class="o">=</span><span class="s2">"KM"</span>
+<span class="nb">export </span><span class="nv">KEY_CITY</span><span class="o">=</span><span class="s2">"Kunming"</span>
+<span class="nb">export </span><span class="nv">KEY_ORG</span><span class="o">=</span><span class="s2">"skylens"</span>
+<span class="nb">export </span><span class="nv">KEY_EMAIL</span><span class="o">=</span><span class="s2">"skylens116@qq.com"</span>
+<span class="nb">export </span><span class="nv">KEY_EMAIL</span><span class="o">=</span>skylens116@qq.com
+<span class="nb">export </span><span class="nv">KEY_CN</span><span class="o">=</span>CN
+<span class="nb">export </span><span class="nv">KEY_NAME</span><span class="o">=</span>skylens
+<span class="nb">export </span><span class="nv">KEY_OU</span><span class="o">=</span>skylens
+<span class="nb">export </span><span class="nv">PKCS11_MODULE_PATH</span><span class="o">=</span>changeme
+<span class="nb">export </span><span class="nv">PKCS11_PIN</span><span class="o">=</span>1234
+
+<span class="c"># source vars</span>
+<span class="c"># ./clean-all   //清除之前生成的所有证书</span>
+<span class="c"># ./build-ca    //生成CA证书</span>
+<span class="c"># ./build-key-server server   //生成名为server的服务端证书和私钥</span>
+<span class="c"># ./build-key test			 //生成名为test的客户端证书和私钥</span>
+<span class="c"># ./build-key-pass ett		 //生成名为ett的客户端加密证书和私钥</span>
+<span class="c"># ./build-dh                 //创建迪菲·赫尔曼密钥</span>
+<span class="c"># openvpn --genkey --secret keys/ta.key   //生成tls加密密钥</span>
+<span class="c"># cp -ap keys/ /etc/openvpn/   //把生成的密钥拷贝到opevpn的配置目录下 (其实是ca.crt server.crt server.key dh1024.pem ta.key 这些文件，并不需要靠所有)</span>
+<span class="c"># cd /etc/openvpn/keys</span>
+<span class="c"># ll</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>修改服务端配置文件(<strong>注意:/etc/openvpn/下只能有一个.conf的配置文件,不然使用官方脚本启动会失败</strong>)</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># cp /root/openvpn/openvpn-2.2.2/sample-scripts/server.conf /etc/openvpn/  //这个文件注释太多了，可以参考下面的配置</span>
+<span class="c"># vim /etc/openvpn/server.conf</span>
+
+<span class="nb">local </span>192.168.42.153
+port 52115
+proto tcp
+dev tun
+ca /etc/openvpn/keys/ca.crt
+cert /etc/openvpn/keys/server.crt
+key /etc/openvpn/keys/server.key
+dh /etc/openvpn/dh1024.pem
+<span class="c"># tls 加密 服务端 0 </span>
+tls-auth /etc/openvpn/keys/ta.key 0
+server 10.8.0.0 255.255.255.0
+push <span class="s2">"route 172.0.0.0 255.255.255.0"</span>
+ifconfig-pool-persist /etc/openvpn/ipp.txt
+keepalive 10 120
+comp-lzo
+persist-key
+persist-tun
+status /etc/openvpn/openvpn-status.log
+verb 3
+client-to-client
+duplicate-cn
+log /var/log/openvpn.log
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>防火墙及内核转发设置</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># /etc/init.d/iptables stop    //刚开始可以关闭，等测试通过了再来配置防火墙</span>
+<span class="c"># iptables -A INPUT -p tcp --dport 52115 -j ACCEPT</span>
+<span class="c"># vim /etc/sysctl.conf</span>
+//添加
+net.ipv4.ip_forward <span class="o">=</span> 1
+
+<span class="c"># sysctl -p   //检查内核转发设置</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>时间同步设置</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># echo "# time sync" &gt;&gt;/var/spool/cron/root</span>
+<span class="c"># echo '*/5 * * * * /usr/sbin/ntpdate cn.ntp.org.cn &gt;/2&gt;&amp;1' &gt;&gt;/var/spool/cron/root</span>
+<span class="c"># crontab -l</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>客户端设置</p>
+
+    <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c"># cp /root/openvpn/openvpn-2.2.2/sample-scripts/client.conf client.ovpn  //这个文件注释太多了，可以参考下面的配置</span>
+<span class="c"># vim client.ovpn</span>
+
+client
+proto tcp
+dev tun
+remote 192.168.42.153 52115
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+ca ca.crt
+cert test.crt
+key test.key
+<span class="c"># tls 加密 客户端 1</span>
+tls-auth ta.key 1
+ns-cert-type server
+comp-lzo
+verb 3
+
+// 把client.ovpn及客户端对应的证书及密钥拷贝到客户端上并都在同一级目录<span class="o">(</span>ca.crt test.crt test.key ta.key<span class="o">)</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>测试</p>
+
+    <p>在windows10上 ping 172.0.0.128，不能 ping 通，打开 OpenVPN 客户端，之后能 ping 通</p>
+  </li>
+</ul>
+
+
+            <footer class="article-footer">
+    <div class="authorimage">
+        <img src="/assets/img/bsd.jpg" alt="My Avatar" class="img-circle">
+    </div>
+    <section class="author">
+        <h4><a href="/about.html">skylens</a></h4>
+        有问题请联系
+        <a href="mailto:skylens116@qq.com">skylens116@qq.com</a>
+    </section>
+</footer>
+
+        </main>
+
+        <div class="footer-copyright">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-md-12">
+                Copyright &copy; 2017 skylens - All rights reserved.
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74743250-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    </body>
+
+</html>

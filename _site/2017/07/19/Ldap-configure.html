@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>编译安装ldap</title>
+  <meta name="description" content="前言在ubuntu server 14.04下编译安装ldap服务开始  准备">
+
+  <link rel="canonical" href="http://localhost:4000/2017/07/19/Ldap-configure.html">
+
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="/assets/css/icard_resume.css"> -->
+  <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/css/blog.css" >
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon.ico">
+
+  <!-- Google fonts -->
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:300' type='text/css'>
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Source+Sans+Pro' type='text/css'>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.min.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+    <body>
+        <header class="bloghead">
+    <dev class="authorheader">
+        <a href="/">
+            <img alt="My Avatar" src="/assets/img/bsd.jpg"/>
+        </a>
+        <dev class="blogtitle">
+            <h1><a href="/main.html">skylens</a></h1>
+            <h5> (●´ω`●)/ </h5>
+        </dev>
+    </dev>
+
+    <nav class="menu" role="nav">
+        <ul>
+            <li><a href="/main.html">Home</a></li>
+            <li>|</li>
+            <li><a href="/menu.html">Menu</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="https://github.com/skylens">GitHub</a></li>
+            <li>|</li>
+            <li><a target="_blank" href="/about.html">About Me</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+        <main class="blogmain">
+            <header>
+                <h1 class="article-title">编译安装ldap</h1>
+                <p class="article-time">
+                    2017年7月19日 星期三,  发表于 <span>昆明</span>
+                </p>
+            </header>
+            <h3 id="前言">前言</h3>
+
+<p>在ubuntu server 14.04下编译安装ldap服务</p>
+
+<h3 id="开始">开始</h3>
+
+<ul>
+  <li>准备</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo apt-get install gcc make
+</code></pre>
+</div>
+
+<ul>
+  <li>先编译安装BerkeleyDB(注意要选择5.0-5.1或4.4-4.8的版本)</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>wget http://download.oracle.com/berkeley-db/db-5.1.29.tar.gz
+<span class="gp">$ </span>tar -xvf db-5.1.29.tar.gz
+<span class="gp">$ </span><span class="nb">cd </span>db-5.1.29
+<span class="gp">$ </span><span class="nb">cd </span>build_unix
+<span class="gp">$ </span>../dist/configure --prefix<span class="o">=</span>/usr/local/BerkeleyDB
+<span class="gp">$ </span>make
+<span class="gp">$ </span>sudo make install
+<span class="gp">$ </span>sudo cp /usr/local/BerkeleyDB/include/<span class="k">*</span> /usr/include/
+<span class="gp">$ </span>sudo cp /usr/local/BerkeleyDB/lib/<span class="k">*</span> /usr/lib/
+</code></pre>
+</div>
+
+<ul>
+  <li>编译安装openldap</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>wget ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/openldap-2.4.45.tgz
+<span class="gp">$ </span>tar -xvf openldap-2.4.45.tgz
+<span class="gp">$ </span><span class="nb">cd </span>openldap-2.4.45
+<span class="gp">$ </span>./configure --prefix<span class="o">=</span>/usr/local/openldap
+<span class="gp">$ </span>make depend
+<span class="gp">$ </span>make
+<span class="gp">$ </span>make install
+</code></pre>
+</div>
+<ul>
+  <li>设置ldap</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo vim /usr/local/openldap/etc/openldap/slapd.conf
+...
+suffix          <span class="s2">"dc=example,dc=com"</span>
+rootdn          <span class="s2">"cn=admin,dc=example,dc=com"</span>
+rootpw          secret
+include /usr/local/openldap/etc/openldap/schema/core.schema
+include /usr/local/openldap/etc/openldap/schema/cosine.schema
+include /usr/local/openldap/etc/openldap/schema/inetorgperson.schema
+include /usr/local/openldap/etc/openldap/schema/corba.schema
+include /usr/local/openldap/etc/openldap/schema/dyngroup.schema
+include /usr/local/openldap/etc/openldap/schema/java.schema
+include /usr/local/openldap/etc/openldap/schema/misc.schema
+include /usr/local/openldap/etc/openldap/schema/nis.schema
+include /usr/local/openldap/etc/openldap/schema/openldap.schema
+
+<span class="gp">$ </span>/usr/local/openldap/libexec/slapd   //启动sldapd服务
+<span class="gp">$ </span>vim admin.ldif
+dn: <span class="nv">dc</span><span class="o">=</span>example,dc<span class="o">=</span>com
+objectClass: dcObject
+objectClass: organization
+dc: example
+o: Example Company
+
+dn: <span class="nv">cn</span><span class="o">=</span>admin,dc<span class="o">=</span>example,dc<span class="o">=</span>com
+objectClass: organizationalRole
+objectClass: top
+cn: admin
+<span class="gp">$ </span>sudo vim /etc/environment   //修改环境变量把openldap的安装目录添加进去
+<span class="gp">$ </span>ldapadd -x -D <span class="s2">"cn=admin,dc=example,dc=com"</span> -w secret -f admin.ldif   //添加数据库 
+<span class="gp">$ </span>ldapsearch -x -b <span class="s1">'dc=example,dc=com'</span>   //检查数据库是否添加成功
+</code></pre>
+</div>
+
+            <footer class="article-footer">
+    <div class="authorimage">
+        <img src="/assets/img/bsd.jpg" alt="My Avatar" class="img-circle">
+    </div>
+    <section class="author">
+        <h4><a href="/about.html">skylens</a></h4>
+        有问题请联系
+        <a href="mailto:skylens116@qq.com">skylens116@qq.com</a>
+    </section>
+</footer>
+
+        </main>
+
+        <div class="footer-copyright">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-md-12">
+                Copyright &copy; 2017 skylens - All rights reserved.
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74743250-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    </body>
+
+</html>

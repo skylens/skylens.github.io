@@ -76,6 +76,7 @@ swap分区  /dev/sda2
 # locale-gen  //更新语言环境
 # echo "LANG=en_US.UTF-8" > /etc/locale.conf  //设置默认locale
 # ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  //设置时区
+# tzselect  //也可以用 tzselect 来设置时区
 # hwclock --systohc --localtime  //windows双系统可设置为硬件时间，避免windows时间不正确
 # echo XPS13 > /etc/hostname  //修改主机名
 # passwd  //为root用户设置密码
@@ -84,13 +85,28 @@ swap分区  /dev/sda2
 # mkinitcpio –p linux  //加载内核模块(这样解释不知道正不正确)
 ```
 
-- 安装grub
+- 安装引导(主要是针对 UEFI 引导)
 
-```shell
-# pacman -S grub-bios efibootmgr dosfstools os-prober   //os-prober双系统用户安装
-# grub-mkconfig –o /boot/grub/grub.cfg
-# grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
-```
+ - GRUB2
+
+    ```shell
+    # pacman -S grub-bios efibootmgr dosfstools os-prober   //os-prober双系统用户安装
+    # grub-mkconfig –o /boot/grub/grub.cfg
+    # grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=arch_grub --recheck
+    ```
+
+ - systemd-boot
+
+    systemd-boot 默认安装了( PARTUUID 可以用 blkid 获得)
+
+    ```shell
+    # bootctl install
+    # vim /boot/loader/entries/arch.conf
+    title   Arch Linux
+    linux   /vmlinuz-linux
+    initrd  /initramfs-linux.img
+    options root=PARTUUID=06d1a377-976d-47db-a907-9bf03bb8519b rootfstype=btrfs rw pcie_aspm=force i915.enable_rc6=7
+    ```
 
 - 安装结束重启
 
@@ -152,5 +168,18 @@ swap分区  /dev/sda2
 - 安装其他软件
 
 ```shell
-# pacman -S lxappearance nitrogen pcmanfm evince gedit arandr viewnior
+# pacman -S lxappearance nitrogen pcmanfm evince gedit arandr viewnior net-tools
+```
+
+- yaourt 设置
+
+```shell
+$ sudo vim /etc/pacman.conf   //添加如下内容
+
+[archlinuxcn]
+#The Chinese Arch Linux communities packages.
+SigLevel = Optional TrustAll
+Server   = https://mirrors.ustc.edu.cn/archlinuxcn/$arch
+
+$ sudo pacman -Syu yaourt
 ```

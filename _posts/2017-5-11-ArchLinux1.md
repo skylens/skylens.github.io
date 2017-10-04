@@ -153,10 +153,16 @@ swap分区  /dev/sda2
 # pacman -S alsa-utils pulseaudio gnome-alsamixer pavucontrol
 ```
 
-- 安装`fcitx`输入法
+- 安装并配置 `fcitx` 输入法
 
 ```shell
-# pacman -S fcitx fcitx-im fcitx-cloudpinyin fcitx-configtool fcitx-googlepinyin fcitx-qt5
+# pacman -S fcitx-im fcitx-sunpinyin fcitx-cloudpinyin fcitx-configtool
+$ mkdir ~/.config/autostart/
+$ cp /etc/xdg/autostart/fcitx-autostart.desktop ~/.config/autostart/
+$ vim ~/.xprofile
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
 ```
 
 - 安装解压软件

@@ -9,9 +9,22 @@ excerpt_separator: "```"
 
 ### 前言
 
+Gentoo 是一款基于 Linux 的自由操作系统，它能为几乎任何应用程序或需求自动地作出优化和定制。 Gentoo的哲学是自由和选择。Gentoo 拥有媲美 FreeBSD 的广受美誉的 ports 系统 —— Portage 包管理系统。不同于 APT 和 YUM 等二进制文件分发的包管理系统，Portage 是基于源代码分发的，必须编译后才能运行，对于大型软 件而言比较慢，不过正因为所有软件都是在本地机器编译的，在经过各种定制的编译参数优化后，能将机器的硬件性能发挥到极致。Gentoo 是所有 Linux 发行版本里安装最复杂的，但是又是安装完成后最便于管理的版本，也是在相同硬件环境下运行最快的版本。
+
+怀着好奇心在虚拟机上尝试了一下 Gentoo 的安装，并针自己的情况做了一些优化，最后把整个过程记录了下来
+
+比如说：
+
+  + UEFI/GPT 方式安装 
+  + 源的修改（可以使用[163的源](http://mirrors.163.com/.help/gentoo.html)， 也可以使用[中科大的源](http://mirrors.ustc.edu.cn/help/gentoo.html)，我是用的是中科大的源）
+  + 守护进程管理工具是用 systemd ，而没有用自带的 OpenRC （因为用习惯了 systemd ），所以 [stage3 要选择 systemd 版的](http://mirrors.ustc.edu.cn/gentoo/releases/amd64/autobuilds/current-stage3-amd64-systemd/)
+  + 语言使用中文
+  + 内核使用的是 [ck-sources](https://packages.gentoo.org/packages/sys-kernel/ck-sources)
+  ...
+
 ### 准备
 
-注意 : Gentoo 的最小安装镜像不支持 UEFI，他只支持传统的 MBR ；如果你想使用 UEFI，那么就要选择基于 Gentoo 且支持 UEFI 启动的镜像（比如 live CD 或者 ）来安装，当然了你也可以使用支持 UEFI 启动的镜像（如 Archlinux 的镜像）制作 U 盘启动盘，通过启动盘来安装 Gentoo ！
+**注意 : Gentoo 的最小安装镜像不支持 UEFI，他只支持传统的 MBR ；如果你想使用 UEFI，那么就要选择基于 Gentoo 且支持 UEFI 启动的镜像（比如 [live DVD](http://mirrors.ustc.edu.cn/gentoo/releases/amd64/) 或者 [SystemRescueCD](http://www.system-rescue-cd.org/Download/) ）来安装，当然了你也可以使用支持 UEFI 启动的镜像（如 [Archlinux 的镜像](http://mirrors.ustc.edu.cn/archlinux/iso/)）制作 U 盘启动盘，通过启动盘来安装 Gentoo ！**
 
 制作 U 盘启动盘
 
@@ -31,7 +44,18 @@ excerpt_separator: "```"
 
 - 分区
 
+分区的
+
+<br>
+<img src="/assets/post_pictures/partion.png" width="650">
+&nbsp;
+<br>
+
 - 格式化分区
+
+主分区一般默认使用 ext4 格式，boot 分区一般使用 vfat 格式
+
+主分区可以选择其他的文件系统，但是要安装[对应的包](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation#Applying a filesystem to a partition)
 
 ```shell
 # mkfs.ext4 /dev/sda3

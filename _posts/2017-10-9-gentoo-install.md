@@ -77,7 +77,7 @@ GENTOO_MIRRORS="https://mirrors.ustc.edu.cn/gentoo/"
 
 ```shell
 # mkdir /mnt/gentoo/etc/portage/repos.conf
-# /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+# nano -w /mnt/gentoo/etc/portage/repos.conf/gentoo.conf   添加
 [gentoo]
 location = /usr/portage
 sync-type = rsync

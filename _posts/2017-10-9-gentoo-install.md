@@ -182,7 +182,7 @@ zh_CN.GB18030 GB18030
 
 - 选择内核
 
-1. 使用 ck-sources 内核
+1.使用 ck-sources 内核
 
 ```shell
 # echo sys-kernel/ck-sources ~amd64 >> /etc/portage/package.accept_keywords
@@ -191,7 +191,7 @@ zh_CN.GB18030 GB18030
 # emerge --ask sys-kernel/genkernel
 ```
 
-2. 使用 gentoo-sources
+2.使用 gentoo-sources
 
 ```shell
 # emerge --ask sys-kernel/gentoo-sources
@@ -200,14 +200,14 @@ zh_CN.GB18030 GB18030
 
 - 编译内核
 
-1. 完全编译
+1.完全编译
 
 ```shell
 # cd /usr/src/linux
 # genkernel --menuconfig all
 ```
 
-2. 根据自己的需求编译
+2.根据自己的需求编译
 
 ```shell
 # cd /usr/src/linux

@@ -20,7 +20,7 @@ excerpt_separator: "```"
   + 守护进程管理工具是用 systemd ，而没有用自带的 OpenRC （因为用习惯了 systemd ），所以 [stage3 要选择 systemd 版的](http://mirrors.ustc.edu.cn/gentoo/releases/amd64/autobuilds/current-stage3-amd64-systemd/)
   + 语言使用中文
   + 内核使用的是 [ck-sources](https://packages.gentoo.org/packages/sys-kernel/ck-sources)
-  ...
+  + ...
 
 ### 准备
 

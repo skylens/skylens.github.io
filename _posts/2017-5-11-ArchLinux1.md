@@ -55,8 +55,8 @@ swap分区  /dev/sda2
 
 ```shell
 # grep -A 1 'China' /etc/pacman.d/mirrorlist > mirrorlist.bak //取出中国的源，避免操作失误先写到一个新文件中
-# vi /etc/pacman.d/mirrorlist  //检查，删除空行
-# cat mirrorlist.bak > /etc/pacman.d/mirrorlist  //替换原来的内容
+# sed -r '/^\-/d' mirrorlist.bak > mirrorlist.bak && cat mirrorlist.bak1 //删除空行以'-'开头的行并检查
+# cat mirrorlist.bak1 > /etc/pacman.d/mirrorlist  //替换原来的内容
 # pacman -Sy  //更新一下源
 ```
 

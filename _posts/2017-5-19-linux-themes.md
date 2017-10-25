@@ -12,6 +12,7 @@ excerpt_separator: "```"
 - [**`Arc`**](https://github.com/horst3180/arc-theme)
 - [**`OSX-Arc`**](https://github.com/LinxGem33/OSX-Arc-Darker)
 - [**`arc-flatabulous`**](https://github.com/andreisergiu98/arc-flatabulous-theme)
+- [**`United-GNOME`**](https://github.com/godlyranchdressing/United-GNOME)
 - [**`noobslab`**](https://launchpad.net/~noobslab/+archive/ubuntu/themes)
 - [**`Flatabulous`**](https://github.com/anmoljagetia/Flatabulous)
 - [**`Flat-Plat`**](https://github.com/nana-4/Flat-Plat)

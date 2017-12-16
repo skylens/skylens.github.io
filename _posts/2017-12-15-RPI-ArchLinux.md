@@ -111,10 +111,10 @@ makepkg -si
 
 ### 参考
 
-1. [archlinuxarm](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3#installation)
+1. [**`archlinuxarm`**](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3#installation)
 
-2. [Raspberry-Pi-Setup-Guide](https://github.com/phortx/Raspberry-Pi-Setup-Guide)
+2. [**`Raspberry-Pi-Setup-Guide`**](https://github.com/phortx/Raspberry-Pi-Setup-Guide)
 
-3. [installing-arch-linux-raspberry-pi](https://www.novaspirit.com/2017/04/25/installing-arch-linux-raspberry-pi/)
+3. [**`installing-arch-linux-raspberry-pi`**](https://www.novaspirit.com/2017/04/25/installing-arch-linux-raspberry-pi/)
 
-4. [offline_installation_of_packages](https://wiki.archlinux.org/index.php/offline_installation_of_packages)
+4. [**`offline_installation_of_packages`**](https://wiki.archlinux.org/index.php/offline_installation_of_packages)

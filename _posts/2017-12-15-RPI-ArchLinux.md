@@ -111,7 +111,7 @@ makepkg -si
 
 ### 参考
 
-1. [](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3#installation)
+1. [archlinuxarm](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3#installation)
 
 2. [Raspberry-Pi-Setup-Guide](https://github.com/phortx/Raspberry-Pi-Setup-Guide)
 

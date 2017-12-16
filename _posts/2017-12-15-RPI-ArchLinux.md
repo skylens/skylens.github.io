@@ -109,6 +109,23 @@ cd neofetch
 makepkg -si
 ```
 
+### WiringPi 安装
+
+```bash
+git clone git://git.drogon.net/wiringPi /opt/wiringpi
+cd /opt/wiringpi
+./build
+```
+
+### 静态 `IP` 设置
+
+`Raspberry Pi 3` 安装完 `Arch Linux` 之后默认是通过 `DHCP` 的方式进行上网，但是我们需
+要是使用静态 `IP` 的方式来上网
+
+```bash
+
+``` 
+
 ### 参考
 
 1. [**`archlinuxarm`**](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3#installation)

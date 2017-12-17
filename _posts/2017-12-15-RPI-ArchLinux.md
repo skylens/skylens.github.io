@@ -61,6 +61,14 @@ umount boot root
 
 ### 启动树梅派
 
+### 查看树梅派的 `IP`
+
+a. 可以到路由器的客户端列表中查看
+
+b. `Windows` 下使用 `IP Scanner` 查找 `IP`
+
+c. `Linux` 下可以使用 `sudo nmap -sP 192.168.1.0/24` (192.168.1.0 是对应的网段)
+
 ### 设置 `SWAP`
 
 ```bash
@@ -102,7 +110,7 @@ systemctl start ntpd.service
 ### 软件
 
 ```bash
-pacman -S base-devel sudo vim htop libnewt dialog wpa_supplicant wireless_tools iw
+pacman -S base-devel sudo vim htop wget git libnewt dialog wpa_supplicant wireless_tools iw libbcm2835 raspberrypi-firmware-tools
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/neofetch.tar.gz
 tar -xvf wget neofetch.tar.gz
 cd neofetch
@@ -126,12 +134,23 @@ cd /opt/wiringpi
 
 ``` 
 
+### 镜像 `repack` **(`!未验证`)**
+
+```bash
+rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","/swapfile"} / /mnt/
+cd /mnt
+bsdtar -zcvf ../ArchLinux-rpi-3-skylens.tar.gz *
+```
+
+
 ### 参考
 
 1. [**`archlinuxarm`**](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3#installation)
 
 2. [**`Raspberry-Pi-Setup-Guide`**](https://github.com/phortx/Raspberry-Pi-Setup-Guide)
 
-3. [**`installing-arch-linux-raspberry-pi`**](https://www.novaspirit.com/2017/04/25/installing-arch-linux-raspberry-pi/)
+3. [**`Raspberrypi 3 install & configure Archlinux`**](https://www.zybuluo.com/yangxuan/note/344907)
 
-4. [**`offline_installation_of_packages`**](https://wiki.archlinux.org/index.php/offline_installation_of_packages)
+4. [**`installing-arch-linux-raspberry-pi`**](https://www.novaspirit.com/2017/04/25/installing-arch-linux-raspberry-pi/)
+
+5. [**`offline_installation_of_packages`**](https://wiki.archlinux.org/index.php/offline_installation_of_packages)

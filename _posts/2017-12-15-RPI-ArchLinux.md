@@ -53,7 +53,7 @@ mount /dev/sdb2 root
 ### 解压安装系统
 
 ```bash
-bsdtar -xpf ArchLinuxARM-rpi-2-latest.tar.gz -C root
+bsdtar -xvpf ArchLinuxARM-rpi-2-latest.tar.gz -C root
 sync
 mv root/boot/* boot
 umount boot root

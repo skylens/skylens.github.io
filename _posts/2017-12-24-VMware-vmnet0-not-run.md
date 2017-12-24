@@ -13,13 +13,13 @@ excerpt_separator: "```"
 
 ### 解决办法
 
-1. 卸载网络适配器（VMnet1 和 VMnet8）
+**1. 卸载网络适配器（VMnet1 和 VMnet8）**
 
 &nbsp;
 <img src="/assets/post_pictures/delete_network_dev.png" width="300">
 &nbsp;
 
-2. 删除 VMware Workstation 中的所有网络
+**2. 删除 VMware Workstation 中的所有网络**
 
    `编辑 --> 虚拟网络编辑器 --> 更改设置 --> 移除网络 (所有的网络) --> 还原默认设置`
 

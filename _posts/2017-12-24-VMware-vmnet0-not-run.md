@@ -24,6 +24,6 @@ excerpt_separator: "```"
    `编辑 --> 虚拟网络编辑器 --> 更改设置 --> 移除网络 (所有的网络) --> 还原默认设置`
 
 &nbsp;
-<img src="/assets/post_pictures/VMware_network_success.png" width="600">
+<img src="/assets/post_pictures/VMware_network_success.png" width="500">
 &nbsp;
 

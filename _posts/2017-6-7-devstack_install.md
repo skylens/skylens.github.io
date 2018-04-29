@@ -22,6 +22,7 @@ ubuntu server 16.04 (4GB RAM + 60GB 磁盘) + OpenStack newton版 进行验证�
 ```shell
 $ sudo vim /etc/network/interface
 auto eth0
+iface eth0 inet static
 address 192.168.1.123
 netmask 255.255.255.0
 gateway 192.168.1.254
@@ -31,17 +32,17 @@ $ sudo /etc/init.d/networking restart
 $ sudo vim /etc/ssh/sshd_config
 $ sudo /etc/init.d/ssh restart
 $ cd /etc/apt/
-$ sudo cp source.list source.list.bak
+$ sudo cp -u source.list{,.orig}
 $ sudo vim source.list
 $ sudo apt-get update
-$ sudo apt-get install git sudo python-pip tmux ntpdate -y
+$ sudo apt-get install git sudo python-pip tmux ntp -y
+$ sudo timedatectl set-timezone Asia/Shanghai
 ```
 
 - 安装DevStack
 
 ```shell
 $ sudo su - root
-# ntpdate time.windows.com
 # mkdir .pip && cd .pip
 # vim pip.conf
 [global]

@@ -123,3 +123,5 @@ yum install -y lrzsz psmisc htop nmap tcpdump
 3. [http://fedoraproject.org/wiki/EPEL](http://fedoraproject.org/wiki/EPEL)
 
 4. [https://wiki.centos.org/TipsAndTricks/KickStart](https://wiki.centos.org/TipsAndTricks/KickStart)
+
+5. [http://pykickstart.readthedocs.io/en/latest/](http://pykickstart.readthedocs.io/en/latest/)

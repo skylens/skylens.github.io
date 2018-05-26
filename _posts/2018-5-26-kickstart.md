@@ -121,3 +121,5 @@ yum install -y lrzsz psmisc htop nmap tcpdump
 2. [http://debugo.com/kickstart-install-centos/](http://debugo.com/kickstart-install-centos/)
 
 3. [http://fedoraproject.org/wiki/EPEL](http://fedoraproject.org/wiki/EPEL)
+
+4. [https://wiki.centos.org/TipsAndTricks/KickStart](https://wiki.centos.org/TipsAndTricks/KickStart)

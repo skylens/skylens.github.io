@@ -67,7 +67,7 @@ mtd -r write breed-mt7620-xiaomi-mini.bin Bootloader
 3、`PC` 访问 `192.168.1.1`，开到如下效果
 
 <br>
-<img src="/assets/post_pictures/bootloader.png" width="350">
+<img src="/assets/post_pictures/bootloader.png" width="650">
 &nbsp;
 <br>
 

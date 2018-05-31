@@ -73,7 +73,7 @@ mtd -r write breed-mt7620-xiaomi-mini.bin Bootloader
 
 下载 `Padavan` 固件 [地址](http://opt.cn2qq.com/padavan/RT-AC54U-GPIO-30-xiaomimini-128M_3.4.3.9-099.trx)
 
-### 输入 `Padavan` 固件
+### 刷入 `Padavan` 固件
 
 在启动方式里面选择的是__普通固件__，选择 `Padavan` 固件刷入搞定。自动重启完毕之后，浏览器输入 `192.168.123.1`，账号名和密码都是 `admin`，通过 `web` 界面完成进一步设置，`SSH` 用户名密码也是 `admin`。
 

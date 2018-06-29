@@ -1,0 +1,11 @@
+gitbook.com
+gitbook.io
+dotslashlinux.com
+raspberrypi.org
+s3.amazonaws.com
+amazonaws.com
+dropbox.com
+google.com
+youtube.com
+facebook.com
+twitter.com

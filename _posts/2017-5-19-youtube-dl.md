@@ -42,5 +42,5 @@ $ youtube-dl --proxy "socks5://127.0.0.1:1080" -f 22 https://www.youtube.com/wat
 
 ```sh
 $ youtube -F https://www.youtube.com/watch?v=xxxxx
-$ youtube -i 138+251 https://www.youtube.com/watch?v=xxxxx    //138 和 251 分别对应 视频和音频，前提是安装了 ffmpeg
+$ youtube -f 138+251 https://www.youtube.com/watch?v=xxxxx    //138 和 251 分别对应 视频和音频，前提是安装了 ffmpeg
 ```

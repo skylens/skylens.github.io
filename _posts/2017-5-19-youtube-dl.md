@@ -29,3 +29,18 @@ $ youtube-dl --proxy "socks5://127.0.0.1:1080" https://www.youtube.com/watch?v=x
 $ youtube-dl --proxy "socks5://127.0.0.1:1080" -F https://www.youtube.com/watch?v=xxxxx  //加-F参数 列出可下载的格式及信息
 $ youtube-dl --proxy "socks5://127.0.0.1:1080" -f 22 https://www.youtube.com/watch?v=xxxxx  //加-f 22参数 从上面的可下载的格式及信息中选择对应的format编号
 ```
+
++ **安装 `ffmpeg`**
+    
+    [windows 版](https://ffmpeg.zeranoe.com/builds/) 下载可执行文件，并添加环境变量
+
+    [debian版](https://www.ffmpeg.org/download.html#build-linux) 主要是 `debian` 和 `ubuntu` 版的，其他 `GNU/Linux` 并未提供安装安装包
+
+    [macOS版](https://www.ffmpeg.org/download.html#build-mac) 可直接使用 `brew` 安装
+
+**1080P YouTube 视频下载方法**
+
+```sh
+$ youtube -F https://www.youtube.com/watch?v=xxxxx
+$ youtube -i 138+251 https://www.youtube.com/watch?v=xxxxx    //138 和 251 分别对应 视频和音频，前提是安装了 ffmpeg
+```

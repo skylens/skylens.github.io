@@ -45,6 +45,7 @@ CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 PATH=$JAVA_HOME/bin:$PATH
 EOF
 
+chmod +x /etc/profile.d/jdk.sh
 . /etc/profile
 ```
 

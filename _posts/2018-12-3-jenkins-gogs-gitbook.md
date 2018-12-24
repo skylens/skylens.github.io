@@ -9,7 +9,7 @@ excerpt_separator: "```"
 
 ### 前言
 
-有这样一个需求，要部署一个私有的 gitbook 项目，gitbook 源码使用私有的 git 服务器 gogs 托管，每次推送到仓库之后，自动部署 gitbook 项目。首先查到的是 git hook ，但是怎么试，都不能成功。又重新寻找解决方案，然后知道了，自动化构建，自动化部署，最后找到了 jenkins 。使用 jenkins 自动部署 git 仓库中的被推送的 gitbook 代码。
+个人在VPS上使用gogs部署了一个私有的git代码托管平台。gitbook作为一款高颜值的开源的文档管理工具。最近gitbook官方托管的文档服务老是从github同步不了，于是想使用gogs结合gitbook搭建一个私有的的文档管理系统，记录一些自己平时的笔记。
 
 ### 部署 gogs
 
@@ -75,9 +75,9 @@ openssl rand -hex 12
 
 推送地址：http://IP地址:8080/generic-webhook-trigger/invoke?token=30910262eff664f2acbcb962
 
-数据格式：设置为application/json 
+数据格式：设置为application/json
 
-密钥文本：为空 
+密钥文本：为空
 
 请设置您希望触发Web钩子的事件：推送
 

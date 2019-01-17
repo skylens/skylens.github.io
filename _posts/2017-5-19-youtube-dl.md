@@ -31,16 +31,21 @@ $ youtube-dl --proxy "socks5://127.0.0.1:1080" -f 22 https://www.youtube.com/wat
 ```
 
 + **安装 `ffmpeg`**
-    
-    [windows 版](https://ffmpeg.zeranoe.com/builds/) 下载可执行文件，并添加环境变量
 
-    [debian版](https://www.ffmpeg.org/download.html#build-linux) 主要是 `debian` 和 `ubuntu` 版的，其他 `GNU/Linux` 并未提供安装安装包
+    [windows版](https://ffmpeg.zeranoe.com/builds/) 下载可执行文件，并添加环境变量
+
+    [debian版](https://www.ffmpeg.org/download.html#build-linux) 主要是 `debian` 和 `ubuntu` 版的
 
     [macOS版](https://www.ffmpeg.org/download.html#build-mac) 可直接使用 `brew` 安装
 
+    [CentOS/RedHat版](https://rpmfusion.org/Configuration)
+
+	```bash
+	# yum localinstall --nogpgcheck https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm
+    ```
 **1080P YouTube 视频下载方法**
 
 ```sh
-$ youtube -F https://www.youtube.com/watch?v=xxxxx
-$ youtube -f 138+251 https://www.youtube.com/watch?v=xxxxx    //138 和 251 分别对应 视频和音频，前提是安装了 ffmpeg
+$ youtube-dl -F https://www.youtube.com/watch?v=xxxxx
+$ youtube-dl -f 138+251 https://www.youtube.com/watch?v=xxxxx    //138 和 251 分别对应 视频和音频，前提是安装了 ffmpeg
 ```

@@ -4,7 +4,7 @@ title: macOS下的软件列表
 time: 2017年6月16日 星期五
 location: 昆明
 pulished: true
-excerpt_separator: "```"
+excerpt_separator: "```"```
 ---
 
 ### macOS下的软件列表
@@ -51,3 +51,19 @@ excerpt_separator: "```"
 - [`vlc`](http://www.videolan.org/vlc/download-macosx.html)
 
 - [`Keka`](http://www.kekaosx.com/zh-cn/)
+
+- [`iStat menus`](https://bjango.com/mac/istatmenus/)
+
+- [`istatmini`](https://bjango.com/mac/istatmini/)
+
+    ```
+    Name: 982092332@qq.com
+    Serial: GAWAE-FCWQ3-P8NYB-C7GF7-NEDRT-Q5DTB-MFZG6-6NEQC-CRMUD-8MZ2K-66SRB-SU8EW-EDLZ9-TGH3S-8SGA
+    ```
+
+- [`omnigraffle`](https://www.omnigroup.com/omnigraffle/)
+
+    ```
+    Name: board4all.biz
+    Serial: MXTE-QEJC-BAWO-UQCY-UQUN-YDUU-QUN
+    ```

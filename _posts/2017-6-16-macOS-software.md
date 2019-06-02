@@ -4,7 +4,7 @@ title: macOS下的软件列表
 time: 2017年6月16日 星期五
 location: 昆明
 pulished: true
-excerpt_separator: "```"```
+excerpt_separator: "```"
 ---
 
 ### macOS下的软件列表

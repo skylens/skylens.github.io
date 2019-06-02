@@ -1,4 +1,5 @@
-source "https://gems.ruby-china.org"
-gem "rake"
+source "https://rubygems.org"
+ruby RUBY_VERSION
 
+gem "rake"
 gem "jekyll"

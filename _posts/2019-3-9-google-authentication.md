@@ -184,3 +184,5 @@ Do you want to enable rate-limiting? (y/n) y
 **参考**
 
 [CentOS 使用 Google Authenticator 登录验证](https://shenyu.me/2016/09/05/centos-google-authenticator.html)
+
+[为 SSH 连接添加两步认证](https://www.wevg.org/archives/ssh-add-mfa/)
